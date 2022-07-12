@@ -2,14 +2,14 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Usuario')
+@section('title', 'inicio')
 
 @section('content_header')
-    <h1>Gestión de usuarios</h1>
+    <h1 class=text-center>Módulo Ausentismo SG-SST</h1>
 @stop
 
 @section('content')
-    <p>Contenido en construcción</p>
+    <p class=text-center>(Sistema de gestión de seguridad y salud en el trabajo)</p>
 @stop
 
 @section('css')

@@ -230,8 +230,9 @@ return [
         ['header' => 'MENU PRINCIPAL'],
         [
             'text' => 'usuarios',
-            'url'  => 'administrador.users.index',
+            'route'  => 'administrador.users.index',
             'icon' => 'fas fa-fw fa-user',
+            'active' => ['administrador/users*']
         ],
         [
             'text' => 'empleados',
