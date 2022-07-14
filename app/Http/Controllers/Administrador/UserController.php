@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Administrador;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -18,7 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        //$users = User::all();
+        $users = User::where('status', '1')->get();
         //dd($users);
         return view('administrador.users.index', compact('users'));
     }
@@ -39,14 +42,19 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
         //dd($request);
         // $name = strtoupper($request->name);
         //dd($name);
         try
         {
-            User::create($request->all());
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'status' => '1',
+                'password' => bcrypt($request->password),
+            ]);
             //Alert::success('Exitoso', 'Usuario guardado correctamente');
             Alert::toast('Usuario guardado exitosamente','success');
             return redirect()->route('administrador.users.index');
@@ -75,9 +83,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('administrador.users.edit', compact('user'));
     }
 
     /**
@@ -87,9 +95,32 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        //
+        try
+        {
+            if($request->password == null)
+            {
+                $password = $user->password;
+            }
+            else
+            {
+                $password = bcrypt($request->password);
+            }
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'status' => $user->status,
+                'password' => $password,
+            ]);
+            Alert::toast('Usuario actualizado exitosamente','success');
+            return redirect()->route('administrador.users.index');
+
+        }catch(Exception $e)
+        {
+            Alert::toast('Error en la actualización','error');
+            return redirect()->route('administrador.users.index');
+        }
     }
 
     /**
@@ -100,6 +131,19 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        dd($user);
+        try
+        {
+            $user->update([
+                'status' => "0"
+            ]);
+            Alert::toast('Usuario eliminado exitosamente','success');
+            return redirect()->route('administrador.users.index');
+        }    
+        catch(Exception $e)
+        {
+            Alert::toast('Error en la eliminación de usuario','error');
+            return redirect()->route('administrador.users.index');
+        }    
+            
     }
 }
