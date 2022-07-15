@@ -229,74 +229,42 @@ return [
         // Sidebar items:
         ['header' => 'MENU PRINCIPAL'],
         [
-            'text' => 'usuarios',
+            'text' => 'Usuarios',
             'route'  => 'administrador.users.index',
             'icon' => 'fas fa-fw fa-user',
             'active' => ['administrador/users*']
         ],
         [
-            'text' => 'empleados',
+            'text' => 'Empleados',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-users',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Ausentismo',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-users-slash',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Reportes',
+            'icon'    => 'fas fa-fw fa-file',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Area de trabajo',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Tipo de incapacidad',
+                    'url'  => '#',
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Estado de cuenta',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Ausentismo por empleado',
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 

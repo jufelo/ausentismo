@@ -56,6 +56,8 @@
             $('#users').DataTable({
                 responsive:true,
                 autoWidth:false,
+                columnDefs: [{ orderable: false, targets: [2,3] }],
+                order: [[1, 'asc']],
                 "language":{
                     "lengthMenu":"Mostrar "+
                 `<select class="custom-select custom-select-sm form-control form-control-sm">
