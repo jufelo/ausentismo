@@ -236,7 +236,7 @@ return [
         ],
         [
             'text' => 'Empleados',
-            'url'  => 'admin/settings',
+            'route'  => 'administrador.employees.index',
             'icon' => 'fas fa-fw fa-users',
         ],
         [
