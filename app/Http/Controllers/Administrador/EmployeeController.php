@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Administrador;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeeStoreRequest;
+use App\Http\Requests\EmployeeUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use Exception;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +19,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('administrador.employees.index');
+        $employees = Employee::all();
+        return view('administrador.employees.index', compact('employees'));
     }
 
     /**
@@ -34,10 +39,25 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeStoreRequest $request)
     {
-        //
+        //dd($request);
+        try
+        {
+            Employee::create($request->all());
+
+            //Alert::success('Exitoso', 'Usuario guardado correctamente');
+            Alert::toast('Empleado guardado exitosamente','success');
+            return redirect()->route('administrador.employees.index');
+
+        }
+        catch(Exception $e)
+        {
+            //dd($request);
+            return "Ha ocurrido un error";
+        }
     }
+    
 
     /**
      * Display the specified resource.
@@ -58,7 +78,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('administrador.employees.edit', compact('employee'));
     }
 
     /**
@@ -68,9 +88,20 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeUpdateRequest $request, Employee $employee)
     {
-        //
+        try
+        {
+            $employee->update($request->all());
+            //dd($employee);
+            Alert::toast('Usuario actualizado exitosamente','success');
+            return redirect()->route('administrador.employees.index');
+
+        }catch(Exception $e)
+        {
+            Alert::toast('Error en la actualización','error');
+            return redirect()->route('administrador.employees.index');
+        }
     }
 
     /**
@@ -79,7 +110,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
         //
     }
