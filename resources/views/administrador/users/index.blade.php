@@ -2,8 +2,9 @@
 
 @section('title', 'Usuario')
 
-@section('content_header')<h3>Gestión de usuarios<a href="{{route('administrador.users.create')}}" class="btn btn-primary btn-sm float-right">Crear usuario</a>
-    </h3>
+@section('content_header')
+<a href="{{route('administrador.users.create')}}" class="btn btn-primary btn-sm float-right">Crear usuario</a>
+<h3>Gestión de usuarios</h3>
     
 @stop
 
@@ -57,7 +58,7 @@
                 responsive:true,
                 autoWidth:false,
                 columnDefs: [{ orderable: false, targets: [2,3] }],
-                order: [[1, 'asc']],
+                //order: [[1, 'asc']],
                 "language":{
                     "lengthMenu":"Mostrar "+
                 `<select class="custom-select custom-select-sm form-control form-control-sm">

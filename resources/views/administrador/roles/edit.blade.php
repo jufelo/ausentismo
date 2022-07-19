@@ -3,15 +3,15 @@
 @section('title', 'inicio')
 
 @section('content_header')
-    <h3>Editar Usuario</h3>
+    <h3>Editar Rol</h3>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::model($user, ['route' => ['administrador.users.update', $user], 'method' => 'put']) !!}
-                @include('administrador.users.partials.form')
-                {!! Form::submit('Actualizar usuario',['class' => 'btn btn-primary btn-sm']) !!}
+            {!! Form::model($role, ['route' => ['administrador.roles.update', $role], 'method' => 'put']) !!}
+                @include('administrador.roles.partials.form')
+                {!! Form::submit('Actualizar rol',['class' => 'btn btn-primary btn-sm']) !!}
             {!! Form::close() !!}
         </div>
     </div>

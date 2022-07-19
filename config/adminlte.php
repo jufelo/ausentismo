@@ -227,7 +227,7 @@ return [
     'menu' => [
 
         // Sidebar items:
-        ['header' => 'MENU PRINCIPAL'],
+        ['header' => 'ADMINISTRADOR'],
         [
             'text' => 'Usuarios',
             'route'  => 'administrador.users.index',
@@ -235,9 +235,16 @@ return [
             'active' => ['administrador/users*']
         ],
         [
+            'text' => 'Roles',
+            'route'  => 'administrador.roles.index',
+            'icon' => 'fas fa-fw fa-users',
+            'active' => ['administrador/roles*']
+        ],
+        [
             'text' => 'Empleados',
             'route'  => 'administrador.employees.index',
             'icon' => 'fas fa-fw fa-users',
+            'active' => ['administrador/employees*']
         ],
         [
             'text' => 'Ausentismo',

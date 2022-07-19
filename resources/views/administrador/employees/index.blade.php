@@ -3,8 +3,8 @@
 @section('title', 'Empleado')
 
 @section('content_header')
-<h3>Gestión de empleados<a href="{{route('administrador.employees.create')}}" class="btn btn-primary btn-sm float-right">Crear empleado</a>
-</h3>
+<a href="{{route('administrador.employees.create')}}" class="btn btn-primary btn-sm float-right">Crear empleado</a>
+<h3>Gestión de empleados</h3>
 @stop
 
 @section('content')
@@ -71,7 +71,7 @@
                 responsive:true,
                 autoWidth:false,
                 columnDefs: [{ orderable: false, targets: [9,10] }],
-                order: [[2, 'asc']],
+                //order: [[2, 'asc']],
                 "language":{
                     "lengthMenu":"Mostrar "+
                 `<select class="custom-select custom-select-sm form-control form-control-sm">

@@ -1,5 +1,3 @@
-<!--<h1>Bienvenido a la vista principal</h1>-->
-
 @extends('adminlte::page')
 
 @section('title', 'inicio')
@@ -11,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::model($employee, ['route' => ['administrador.employees.update', $employee], 'method' => 'put']) !!}
+            {!! Form::model($rol, ['route' => ['administrador.employees.update', $employee], 'method' => 'put']) !!}
                 @include('administrador.employees.partials.form')
                 {!! Form::submit('Actualizar empleado',['class' => 'btn btn-primary btn-sm']) !!}
             {!! Form::close() !!}
