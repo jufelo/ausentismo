@@ -67,7 +67,7 @@
 <div class="form-group">
     {!! Form::label('eps', 'eps') !!}
     <!--<label name="name">Nombre</label>-->
-    {!! Form::text('eps', null , ['class' => 'form-control'.($errors->has('eps') ? ' is-invalid':null), 'placeholder' => 'Ingrese la Eps']) !!}
+    {!! Form::select('eps', ['Sura' => 'Sura', 'Nueva Eps' => 'Nueva Eps'], null, ['class' => 'form-control'.($errors->has('eps') ? ' is-invalid':''), 'placeholder' => 'Seleccione eps...']) !!}
     @error('eps')
         <span class="invalid-feedback" role="alert">
             <strong>*{{ $message }}</strong>
@@ -78,7 +78,7 @@
 <div class="form-group">
     {!! Form::label('arl', 'arl') !!}
     <!--<label name="name">Nombre</label>-->
-    {!! Form::text('arl', null , ['class' => 'form-control'.($errors->has('arl') ? ' is-invalid':null), 'placeholder' => 'Ingrese la Arl']) !!}
+    {!! Form::select('arl', ['Sura' => 'Sura', 'Axa Colpatria' => 'Axa Colpatria'], null, ['class' => 'form-control'.($errors->has('arl') ? ' is-invalid':''), 'placeholder' => 'Seleccione arl...']) !!}
     @error('arl')
         <span class="invalid-feedback" role="alert">
             <strong>*{{ $message }}</strong>
@@ -89,7 +89,7 @@
 <div class="form-group">
     {!! Form::label('afp', 'afp') !!}
     <!--<label name="name">Nombre</label>-->
-    {!! Form::text('afp', null , ['class' => 'form-control'.($errors->has('afp') ? ' is-invalid':null), 'placeholder' => 'Ingrese la Afp']) !!}
+    {!! Form::select('afp', ['Protección' => 'Protección', 'Colfondos' => 'Colfondos'], null, ['class' => 'form-control'.($errors->has('afp') ? ' is-invalid':''), 'placeholder' => 'Seleccione afp...']) !!}
     @error('afp')
         <span class="invalid-feedback" role="alert">
             <strong>*{{ $message }}</strong>

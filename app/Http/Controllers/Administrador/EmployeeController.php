@@ -112,6 +112,16 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        try
+        {
+            $employee->delete();
+            Alert::toast('Usuario eliminado exitosamente','success');
+            return redirect()->route('administrador.employees.index');
+        }    
+        catch(Exception $e)
+        {
+            Alert::toast('Error en la eliminación de usuario','error');
+            return redirect()->route('administrador.employees.index');
+        }    
     }
 }
