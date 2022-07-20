@@ -8,6 +8,7 @@
         </span>
     @enderror
 </div>
+
 <div class="form-group">
     {!! Form::label('email', 'Correo Electrónico') !!}
     <!--<label name="name">Nombre</label>-->

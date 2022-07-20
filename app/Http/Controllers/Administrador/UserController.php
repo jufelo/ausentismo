@@ -9,7 +9,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -85,7 +85,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('administrador.users.edit', compact('user'));
+        $roles = Role::all();
+        //dd($roles);
+        return view('administrador.users.edit', compact('user','roles'));
     }
 
     /**
@@ -99,20 +101,8 @@ class UserController extends Controller
     {
         try
         {
-            if($request->password == null)
-            {
-                $password = $user->password;
-            }
-            else
-            {
-                $password = bcrypt($request->password);
-            }
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'status' => $user->status,
-                'password' => $password,
-            ]);
+            $user->roles()->sync($request->roles);
+
             Alert::toast('Usuario actualizado exitosamente','success');
             return redirect()->route('administrador.users.index');
 

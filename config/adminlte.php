@@ -227,13 +227,16 @@ return [
     'menu' => [
 
         // Sidebar items:
-        ['header' => 'ADMINISTRADOR'],
         [
             'text' => 'Usuarios',
             'route'  => 'administrador.users.index',
             'icon' => 'fas fa-fw fa-user',
-            'active' => ['administrador/users*']
+            'active' => ['administrador/users*'],
+            //'can' => 'administrador.users.index'
         ],
+
+        ['header' => 'ADMINISTRADOR'],
+        
         [
             'text' => 'Roles',
             'route'  => 'administrador.roles.index',
