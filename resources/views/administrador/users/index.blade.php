@@ -18,6 +18,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Correo</th>
+                        <th>Rol</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -27,6 +28,11 @@
                         <tr>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
+                            <td>
+                                @foreach ($user->roles as $role)
+                                    <span class="badge badge-info">{{ $role->name}}</span>
+                                @endforeach
+                            </td>
                             <td width="10px"><a href="{{route('administrador.users.edit',$user)}}" class="btn btn-success btn-sm">Editar</td>
                             <td width="10px">
                                 <form action="{{route('administrador.users.destroy',$user)}}" method="POST">
@@ -57,7 +63,7 @@
             $('#users').DataTable({
                 responsive:true,
                 autoWidth:false,
-                columnDefs: [{ orderable: false, targets: [2,3] }],
+                columnDefs: [{ orderable: false, targets: [3,4] }],
                 //order: [[1, 'asc']],
                 "language":{
                     "lengthMenu":"Mostrar "+
