@@ -1,8 +1,17 @@
 <div class="form-group">
     {!! Form::label('name', 'Nombre') !!}
-    <!--<label name="name">Nombre</label>-->
-    {!! Form::text('name', null , ['class' => 'form-control'.($errors->has('name') ? ' is-invalid':null), 'placeholder' => 'Ingrese el nombre completo']) !!}
+    {!! Form::text('name', null , ['class' => 'form-control'.($errors->has('name') ? ' is-invalid':null), 'placeholder' => 'Ingrese el nombre']) !!}
     @error('name')
+        <span class="invalid-feedback" role="alert">
+            <strong>*{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+
+<div class="form-group">
+    {!! Form::label('lastname', 'Apellido') !!}
+    {!! Form::text('lastname', null , ['class' => 'form-control'.($errors->has('lastname') ? ' is-invalid':null), 'placeholder' => 'Ingrese el  apellido']) !!}
+    @error('lastname')
         <span class="invalid-feedback" role="alert">
             <strong>*{{ $message }}</strong>
         </span>

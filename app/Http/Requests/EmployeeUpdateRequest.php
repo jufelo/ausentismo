@@ -25,6 +25,7 @@ class EmployeeUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'lastname' => 'required',
             'identification' => 'required',
             'salary' => 'required',
             'position' => 'required',
@@ -39,12 +40,13 @@ class EmployeeUpdateRequest extends FormRequest
    {
         return
         [
-            'name.required' => 'Debe ingresar un nombre',
+            'name.required' => 'Debe ingresar los nombres completos',
+            'lastname.required' => 'Debe ingresar los apellidos completos',
             'identification.required' => 'Debe ingresar un número de identificación',
             'salary.required' => 'Debe ingresar el salario',
             'position.required' => 'Debe ingresar el cargo',
             'work_area.required' => 'Debe ingresar el área de trabajo',
-            'eps.required' => 'Debe ingresar la Eps salario',
+            'eps.required' => 'Debe ingresar la Eps',
             'arl.required' => 'Debe ingresar la Arl',
             'afp.required' => 'Debe ingresar la Afp',
         ];

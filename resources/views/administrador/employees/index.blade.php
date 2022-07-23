@@ -16,6 +16,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Apellido</th>
                         <th>ti</th>
                         <th>Identificación</th>
                         <th>Salario</th>
@@ -32,6 +33,7 @@
                     @foreach($employees as $employee)
                         <tr>
                             <td>{{$employee->name}}</td>
+                            <td>{{$employee->lastname}}</td>
                             <td>{{$employee->ti}}</td>
                             <td>{{$employee->identification}}</td>
                             <td>{{$employee->salary}}</td>

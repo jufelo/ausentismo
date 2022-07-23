@@ -1,13 +1,8 @@
-<div class="form-group">
-    {!! Form::label('name', 'Nombre') !!}
-    <!--<label name="name">Nombre</label>-->
-    {!! Form::text('name', null , ['class' => 'form-control'.($errors->has('name') ? ' is-invalid':null), 'placeholder' => 'Ingrese el nombre completo']) !!}
-    @error('name')
-        <span class="invalid-feedback" role="alert">
-            <strong>*{{ $message }}</strong>
-        </span>
-    @enderror
-</div>
+{{-- <div class="form-group">
+    {!! Form::label('employee', 'Eliga un empleado') !!}
+    {!! Form::select('employee', $employees, null, ['class' => 'form-control', 'placeholder' => '-- Eliga un empleado --', 'style' => 'width:100%;']) !!}
+</div> --}}
+
 
 <div class="form-group">
     {!! Form::label('email', 'Correo Electrónico') !!}

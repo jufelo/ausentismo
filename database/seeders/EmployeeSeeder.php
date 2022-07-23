@@ -17,7 +17,8 @@ class EmployeeSeeder extends Seeder
     {
         Employee::create
         ([
-            'name' => 'Juan López',
+            'name' => 'Juan',
+            'lastname' => 'López',
             'ti' => 'Cédula',
             'identification' => '123456789',
             'salary' => '1000000',
@@ -27,5 +28,20 @@ class EmployeeSeeder extends Seeder
             'arl' => 'Sura',
             'afp' => 'Protección'
         ]);
+
+        Employee::create
+        ([
+            'name' => 'Mateo',
+            'lastname' => 'López',
+            'ti' => 'Cédula',
+            'identification' => '987654321',
+            'salary' => '2000000',
+            'position' => 'Gerente',
+            'work_area' => 'Comercial',
+            'eps' => 'Sura',
+            'arl' => 'Sura',
+            'afp' => 'Protección'
+        ]);
+
     }
 }

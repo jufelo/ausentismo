@@ -24,7 +24,7 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            //'name' => 'required',
             'email' => 'required',
         ];
     }
@@ -34,7 +34,7 @@ public function messages()
    {
         return
         [
-            'name.required' => 'Debe ingresar un nombre',
+            //'name.required' => 'Debe ingresar un nombre',
             'email.required' => 'Debe ingresar un correo',
         ];
    } 

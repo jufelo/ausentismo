@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Administrador;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\Employee;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -33,7 +35,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('administrador.users.create');
+        //$employees =  Employee::pluck('full_name','id');
+        $employees = Employee::all();
+        $listaRoles = Role::pluck('name', 'id');
+        return view('administrador.users.create',compact('listaRoles','employees'));
     }
 
     /**
@@ -44,25 +49,24 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        //dd($request);
-        // $name = strtoupper($request->name);
-        //dd($name);
         try
         {
-            User::create([
-                'name' => $request->name,
+            $result = Employee::find($request->employee);
+            $user = User::create([
+                'name' => $result->name.' '.$result->lastname,
                 'email' => $request->email,
                 'status' => '1',
                 'password' => bcrypt($request->password),
+                'employee_id' => $request->employee
             ]);
-            //Alert::success('Exitoso', 'Usuario guardado correctamente');
-            Alert::toast('Usuario guardado exitosamente','success');
+            $user->roles()->sync($request->roles);
+            Alert::toast('usuario guardado exitosamente', 'success');
             return redirect()->route('administrador.users.index');
 
         }
         catch(Exception $e)
         {
-            return "Ha ocurrido un error";
+            return "ha ocurrido un error";
         }
     }
 
@@ -85,9 +89,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::all();
-        //dd($roles);
-        return view('administrador.users.edit', compact('user','roles'));
+        //$employees = Employee::pluck('full_name','id');
+        $employees = Employee::all();
+        $listaRoles = Role::all();
+        //dd($listaRoles);
+        return view('administrador.users.edit',compact('user','listaRoles','employees'));
     }
 
     /**
@@ -101,10 +107,26 @@ class UserController extends Controller
     {
         try
         {
-            $user->roles()->sync($request->roles);
-
-            Alert::toast('Usuario actualizado exitosamente','success');
+            if($request->password == null)
+            {
+                $password = $user->password;
+            }
+            else
+            {
+                $password = bcrypt($request->password);
+            }
+            $user->update([
+                'name' => $user->name,
+                'email' => $request->email,
+                'status' => $user->status,
+                'password'=> $password,
+                'employee_id' => $user->employee_id,
+            ]);
+            $user->roles()->sync($request->listaRoles);
+            //dd($user);
+            Alert::toast('usuario actualizado exitosamente', 'success');
             return redirect()->route('administrador.users.index');
+
 
         }catch(Exception $e)
         {

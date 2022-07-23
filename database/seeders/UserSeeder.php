@@ -20,19 +20,21 @@ class UserSeeder extends Seeder
             'name' => 'PHP-Laravel',
             'email' => 'ad@ad.com',
             'status' => '1',
-            'password' => bcrypt('123')
+            'password' => bcrypt('123'),
+            'employee_id' => '1'
         ])->assignRole('Administrador');
 
         
-
+/*
         User::create
         ([
             'name' => 'Usuario',
             'email' => 'ad@ad2.com',
             'status' => '1',
-            'password' => bcrypt('123')
+            'password' => bcrypt('123'),
+            'employee_id' => '2'
         ])->assignRole('Usuario');
-
+*/
     }
 
 }

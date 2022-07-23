@@ -18,7 +18,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Correo</th>
-                        <th>Rol</th>
+                        <th>Rol Asignado</th>
                         <th></th>
                         <th></th>
                     </tr>

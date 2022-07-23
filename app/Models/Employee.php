@@ -11,6 +11,7 @@ class Employee extends Model
 
     protected $fillable = [
         'name',
+        'lastname',
         'ti',
         'identification',
         'salary',
@@ -20,4 +21,19 @@ class Employee extends Model
         'arl',
         'afp',
     ];
+/*
+    // relacion uno a uno inversa
+    public function user(){
+        
+        return $this->belongsTo('App\Models\User');
+    }
+    */
+    /*
+    public function getFullNameAtribute()
+    {
+        return "{$this->name} {$this->lastname}";
+    }
+    */
 }
+
+
