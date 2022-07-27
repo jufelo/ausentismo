@@ -23,12 +23,10 @@
                 </select>
             </div> 
             @include('administrador.users.partials.form')
-                
-                <div class="form-group">
-                    {!! Form::label('roles', 'Eliga un rol') !!}
-                    {!! Form::select('roles', $listaRoles, null, ['class' => 'form-control', 'placeholder' => 'Seleccione un rol...']) !!}
-                </div>
-
+            <div class="form-group">
+                {!! Form::label('roles', 'Rol') !!}
+                {!! Form::select('roles', $listaRoles, null, ['class' => 'form-control', 'placeholder' => 'Seleccione un rol...']) !!}
+            </div>
                 {!! Form::submit('Crear usuario',['class' => 'btn btn-primary btn.sm']) !!}
                 {!! Form::close() !!}
         </div>

@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Empleado')
+@section('title', 'Incapacidad')
 
 @section('content_header')
-<a href="{{route('administrador.employees.create')}}" class="btn btn-primary btn-sm float-right">Crear empleado</a>
-<h3>Gestión de empleados</h3>
+<a href="{{route('administrador.incapacities.create')}}" class="btn btn-primary btn-sm float-right">Crear incapacidad</a>
+<h3>Gestión de incapacidades</h3>
 @stop
 
 @section('content')
@@ -12,39 +12,30 @@
     <!--<p>Contenido en construcción</p>-->
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped" id="employees">
+            <table class="table table-striped" id="incapacities">
                 <thead>
-                    <tr>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Tipo de identificación</th>
-                        <th>Identificación</th>
-                        <th>Salario</th>
-                        <th>Cargo</th>
-                        <th>Area de trabajo</th>
-                        <th>EPS</th>
-                        <th>ARL</th>
-                        <th>AFP</th>
+                    <tr class='text-center'>
+                        <th>ID empleado</th>
+                        <th>ID incapacidad</th>
+                        <th>Fecha inicio Incapacidad</th>
+                        <th>Fecha finalización Incapacidad</th>
+                        <th>Clasificación</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($employees as $employee)
+                    @foreach($incapacities as $incapacity)
                         <tr>
-                            <td>{{$employee->name}}</td>
-                            <td>{{$employee->lastname}}</td>
-                            <td>{{$employee->ti}}</td>
-                            <td>{{$employee->identification}}</td>
-                            <td>{{$employee->salary}}</td>
-                            <td>{{$employee->position}}</td>
-                            <td>{{$employee->work_area}}</td>
-                            <td>{{$employee->eps}}</td>
-                            <td>{{$employee->arl}}</td>
-                            <td>{{$employee->afp}}</td>
-                            <td width="10px"><a href="{{route('administrador.employees.edit',$employee)}}" class="btn btn-success btn-sm">Editar</td>
+                            <td>{{$incapacity->employee_id}}</td>
+                            <td>{{$incapacity->incapacity_type_id}}</td>
+                            <td>{{$incapacity->start_date}}</td>
+                            <td>{{$incapacity->end_date}}</td>
+                            <td>{{$incapacity->clasification}}</td>
+                            </td>
+                            <td width="10px"><a href="{{route('administrador.incapacities.edit',$incapacity)}}" class="btn btn-success btn-sm">Editar</td>
                             <td width="10px">
-                                <form action="{{route('administrador.employees.destroy',$employee)}}" method="POST">
+                                <form action="{{route('administrador.incapacities.destroy',$incapacity)}}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
@@ -69,10 +60,10 @@
 @push('js')
     <script>
         $(document).ready(function () {
-            $('#employees').DataTable({
+            $('#incapacities').DataTable({
                 responsive:true,
                 autoWidth:false,
-                columnDefs: [{ orderable: false, targets: [9,10] }],
+                //columnDefs: [{ orderable: false, targets: [13,14] }],
                 //order: [[2, 'asc']],
                 "language":{
                     "lengthMenu":"Mostrar "+

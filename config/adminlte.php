@@ -251,8 +251,10 @@ return [
         ],
         [
             'text' => 'Ausentismo',
-            'url'  => 'admin/settings',
+            'route'  => 'administrador.incapacities.index',
             'icon' => 'fas fa-fw fa-users-slash',
+            'active' => ['administrador/incapacities*']
+
         ],
         [
             'text'    => 'Reportes',

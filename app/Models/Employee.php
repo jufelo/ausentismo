@@ -28,12 +28,9 @@ class Employee extends Model
         return $this->belongsTo('App\Models\User');
     }
     */
-    /*
-    public function getFullNameAtribute()
-    {
-        return "{$this->name} {$this->lastname}";
-    }
-    */
+    
+   
+    
 }
 
 

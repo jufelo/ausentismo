@@ -44,8 +44,9 @@ class EmployeeController extends Controller
         //dd($request);
         try
         {
+            //dd($request);
             Employee::create($request->all());
-
+            //dd($request);
             //Alert::success('Exitoso', 'Usuario guardado correctamente');
             Alert::toast('Empleado guardado exitosamente','success');
             return redirect()->route('administrador.employees.index');
