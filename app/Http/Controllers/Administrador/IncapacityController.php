@@ -52,7 +52,15 @@ class IncapacityController extends Controller
         try
         {
 
-            Incapacity::create($request->all());
+            Employee::find($request->employee);
+            dd($employee);
+            Incapacity::create([
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'clasification' => $request->clasification,
+                'incapacity_type_id' => $request->incapacity_type_id,
+                'employee_id' => $request->employee
+            ]);
             
             Alert::toast('usuario guardado exitosamente', 'success');
             return redirect()->route('administrador.incapacities.index');

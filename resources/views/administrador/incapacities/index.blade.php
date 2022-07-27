@@ -15,8 +15,8 @@
             <table class="table table-striped" id="incapacities">
                 <thead>
                     <tr class='text-center'>
-                        <th>ID empleado</th>
-                        <th>ID incapacidad</th>
+                        <th>Empleado</th>
+                        <th>Tipo de incapacidad</th>
                         <th>Fecha inicio Incapacidad</th>
                         <th>Fecha finalización Incapacidad</th>
                         <th>Clasificación</th>
