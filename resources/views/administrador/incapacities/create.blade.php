@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-    <!--<p>Contenido en construcción</p>-->
     <div class="card">
         <div class="card-body">
             {!! Form::open(['route' => 'administrador.incapacities.store']) !!}

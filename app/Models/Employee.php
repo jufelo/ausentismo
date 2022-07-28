@@ -21,6 +21,12 @@ class Employee extends Model
         'arl',
         'afp',
     ];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->name} {$this->lastname}";
+    }
+    
 /*
     // relacion uno a uno inversa
     public function user(){

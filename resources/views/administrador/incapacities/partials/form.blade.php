@@ -1,13 +1,18 @@
+@if (!empty($incapacity))
 <div class="form-group">
-    {!! Form::label('employee', 'Empleado') !!}
-    <select name="employee" id="employee_id" class="form-control">
-        <option value="">Seleccione un empleado...</option>
-        @foreach ($employees as $employee)
-        {{--<option value="{{$employee->id}} ">{{$employee->full_name}}</option>--}}
-        <option value="{{$employee->id}} ">{{$employee->name}} {{$employee->lastname}}</option>
-        @endforeach
-    </select>
-</div> 
+        {!! Form::label('employee', 'Empleado') !!}
+    {!! Form::text('employee', $employee->full_name , ['class' => 'form-control', 'readonly']) !!}
+    </div>
+@else
+    <div class="form-group">
+        {!! Form::label('employee', 'Eliga un empleado') !!}
+        <select name="employee" id="employee_id" class="form-control">
+            @foreach ($employees as $employee)
+                <option value="{{$employee->id}} ">{{$employee->full_name}}</option>
+            @endforeach
+        </select>
+    </div>
+@endif
 
 <div class="form-group">
     {!! Form::label('incapacity_type_id', 'Tipo de incapacidad') !!}

@@ -18,7 +18,7 @@ class Incapacity extends Model
 
     ];   
 
-    public function getFullNameAtribute()
+    public function getFullNameAttribute()
     {
         return "{$this->name} {$this->lastname}";
     }
@@ -27,10 +27,10 @@ class Incapacity extends Model
      * Get the Incapacity_type for the employee.
      */
 
-    
 
-    public function incapacity_type()
+    //RELACION DE UNO A UNO CON USUARIO
+    public function user()
     {
-        return $this->hasMany(Incapacity_type::class);
+        return $this->hasOne(Incapacity::class);
     }
 }

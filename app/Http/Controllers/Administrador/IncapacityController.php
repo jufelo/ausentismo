@@ -21,11 +21,10 @@ class IncapacityController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        //dd($employees);
         $incapacities = Incapacity::all();
-        $listaIncapacidades = Incapacity_type::pluck('name','id');
-        //dd($incapacities);
-        return view('administrador.incapacities.index', compact('employees', 'incapacities', 'listaIncapacidades'));
+        $incapacity_types = Incapacity_type::all();
+        
+        return view('administrador.incapacities.index', compact('employees', 'incapacities','incapacity_types'));
     }
 
     /**
@@ -53,7 +52,7 @@ class IncapacityController extends Controller
         {
 
             Employee::find($request->employee);
-            dd($employee);
+            //dd($employee);
             Incapacity::create([
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
@@ -91,9 +90,13 @@ class IncapacityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Incapacity $incapacity)
     {
-        //
+        $employees = Employee::all();
+        $employee = Employee::find($incapacity->employee_id);
+        $listaIncapacidades = Incapacity_type::pluck('name','id');
+        //dd($incapacity);
+        return view('administrador.incapacities.edit', compact('incapacity', 'employees', 'employee', 'listaIncapacidades'));
     }
 
     /**
@@ -103,9 +106,23 @@ class IncapacityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(IncapacityStoreRequest $request, Incapacity $incapacity)
     {
-        //
+        {
+            try
+            {
+                $incapacity->update($request->all());
+                //dd($employee);
+                Alert::toast('Usuario actualizado exitosamente','success');
+                return redirect()->route('administrador.incapacities.index');
+    
+            }catch(Exception $e)
+            {
+                Alert::toast('Error en la actualización','error');
+                return redirect()->route('administrador.incapacities.index');
+            }
+        }
+    
     }
 
     /**

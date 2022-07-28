@@ -27,8 +27,16 @@
                 <tbody>
                     @foreach($incapacities as $incapacity)
                         <tr>
-                            <td>{{$incapacity->employee_id}}</td>
-                            <td>{{$incapacity->incapacity_type_id}}</td>
+                            @foreach($employees as $employee)
+                            @if($incapacity->employee_id == $employee->id)
+                            <td>{{$employee->full_name}}</td>
+                            @endif
+                            @endforeach
+                            @foreach($incapacity_types as $incapacity_type)
+                            @if($incapacity->incapacity_type_id == $incapacity_type->id)
+                            <td>{{$incapacity_type->name}}</td>
+                            @endif
+                            @endforeach
                             <td>{{$incapacity->start_date}}</td>
                             <td>{{$incapacity->end_date}}</td>
                             <td>{{$incapacity->clasification}}</td>
@@ -63,7 +71,7 @@
             $('#incapacities').DataTable({
                 responsive:true,
                 autoWidth:false,
-                //columnDefs: [{ orderable: false, targets: [13,14] }],
+                columnDefs: [{ orderable: false, targets: [5,6] }],
                 //order: [[2, 'asc']],
                 "language":{
                     "lengthMenu":"Mostrar "+
