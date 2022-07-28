@@ -61,7 +61,7 @@ class IncapacityController extends Controller
                 'employee_id' => $request->employee
             ]);
             
-            Alert::toast('usuario guardado exitosamente', 'success');
+            Alert::toast('registro incapacidad guardado exitosamente', 'success');
             return redirect()->route('administrador.incapacities.index');
 
 
@@ -113,7 +113,7 @@ class IncapacityController extends Controller
             {
                 $incapacity->update($request->all());
                 //dd($employee);
-                Alert::toast('Usuario actualizado exitosamente','success');
+                Alert::toast('Registro actualizado exitosamente','success');
                 return redirect()->route('administrador.incapacities.index');
     
             }catch(Exception $e)
@@ -131,8 +131,18 @@ class IncapacityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Incapacity $incapacity)
     {
-        //
+        try
+        {
+            $incapacity->delete();
+            Alert::toast('Registro de incapacidad eliminado exitosamente','success');
+            return redirect()->route('administrador.incapacities.index');
+        }    
+        catch(Exception $e)
+        {
+            Alert::toast('Error en la eliminación del registro de incapacidad','error');
+            return redirect()->route('administrador.incapacities.index');
+        }    
     }
 }

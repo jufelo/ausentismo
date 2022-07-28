@@ -48,7 +48,7 @@ class EmployeeController extends Controller
             Employee::create($request->all());
             //dd($request);
             //Alert::success('Exitoso', 'Usuario guardado correctamente');
-            Alert::toast('Empleado guardado exitosamente','success');
+            Alert::toast('Regstro empleado guardado exitosamente','success');
             return redirect()->route('administrador.employees.index');
 
         }
@@ -116,12 +116,12 @@ class EmployeeController extends Controller
         try
         {
             $employee->delete();
-            Alert::toast('Usuario eliminado exitosamente','success');
+            Alert::toast('Registro empleado eliminado exitosamente','success');
             return redirect()->route('administrador.employees.index');
         }    
         catch(Exception $e)
         {
-            Alert::toast('Error en la eliminación de usuario','error');
+            Alert::toast('Error en la eliminación del registro empleado','error');
             return redirect()->route('administrador.employees.index');
         }    
     }
