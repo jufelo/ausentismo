@@ -89,19 +89,19 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeUpdateRequest $request, Employee $employee)
+    public function update(EmployeeUpdateRequest $request, Employee $incapacity)
     {
         try
         {
-            $employee->update($request->all());
+            $$incapacity->update($request->all());
             //dd($employee);
             Alert::toast('Usuario actualizado exitosamente','success');
-            return redirect()->route('administrador.employees.index');
+            return redirect()->route('administrador.incapacities.index');
 
         }catch(Exception $e)
         {
             Alert::toast('Error en la actualización','error');
-            return redirect()->route('administrador.employees.index');
+            return redirect()->route('administrador.incapacities.index');
         }
     }
 
