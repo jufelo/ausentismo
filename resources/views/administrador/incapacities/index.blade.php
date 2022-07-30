@@ -4,7 +4,7 @@
 
 @section('content_header')
 <a href="{{route('administrador.incapacities.create')}}" class="btn btn-primary btn-sm float-right">Crear incapacidad</a>
-<h3>Gestión de incapacidades</h3>
+<h3>Gestión de ausentismos</h3>
 @stop
 
 @section('content')
@@ -71,12 +71,13 @@
             $('#incapacities').DataTable({
                 responsive:true,
                 autoWidth:false,
+                //scrollY: true,
                 columnDefs: [{ orderable: false, targets: [5,6] }],
                 //order: [[2, 'asc']],
                 "language":{
                     "lengthMenu":"Mostrar "+
                 `<select class="custom-select custom-select-sm form-control form-control-sm">
-                    <option value="10">10</option>
+                    <option value="5">5</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
                     <option value="100">100</option>

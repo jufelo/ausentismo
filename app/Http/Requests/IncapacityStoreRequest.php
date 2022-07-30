@@ -33,7 +33,7 @@ class IncapacityStoreRequest extends FormRequest
    {
         return
         [
-            'end_date.required' => 'Debe ingresar la fecha inicial de la incapacidad',
+            'start_date.required' => 'Debe ingresar la fecha inicial de la incapacidad',
             'end_date.required' => 'Debe ingresar la fecha de finalización de la incapacidad',
             'clasification.required' => 'Debe ingresar el tipo de clasificación',
         ];

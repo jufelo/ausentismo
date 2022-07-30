@@ -240,7 +240,7 @@ return [
         [
             'text' => 'Roles',
             'route'  => 'administrador.roles.index',
-            'icon' => 'fas fa-fw fa-users',
+            'icon' => 'fas fa-fw fa-user-lock',
             'active' => ['administrador/roles*']
         ],
         [
@@ -254,6 +254,14 @@ return [
             'route'  => 'administrador.incapacities.index',
             'icon' => 'fas fa-fw fa-users-slash',
             'active' => ['administrador/incapacities*']
+
+        ],
+        [
+            'text' => 'Consulta CIE10',
+            'url'  => 'https://web.sispro.gov.co/WebPublico/Consultas/ConsultarDetalleReferenciaBasica.aspx?Code=CIE10',
+            //'url'  => 'https://cpockets.com/cie10',
+            'icon' => 'fas fa-fw fa-globe',
+            'active' => ['administrador/#']
 
         ],
         [

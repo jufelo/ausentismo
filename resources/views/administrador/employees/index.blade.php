@@ -72,6 +72,7 @@
             $('#employees').DataTable({
                 responsive:true,
                 autoWidth:false,
+                //scrollX: true,
                 columnDefs: [{ orderable: false, targets: [9,10] }],
                 //order: [[2, 'asc']],
                 "language":{

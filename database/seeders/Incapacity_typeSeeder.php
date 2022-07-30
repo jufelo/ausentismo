@@ -22,9 +22,14 @@ class Incapacity_typeSeeder extends Seeder
 
         Incapacity_type::create
         ([
-            'name' => 'Licencia de maternidad / paternidad',
+            'name' => 'Licencia de maternidad',
         ]);
 
+        Incapacity_type::create
+        ([
+            'name' => 'Licencia de paternidad',
+        ]);
+        
         Incapacity_type::create
         ([
             'name' => 'Accidente de trabajo',

@@ -63,10 +63,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-/*
-    Relación uno a uno
+
+    //Relación uno a uno con el empleado
     public function employee(){
         return $this->hasOne('App\Models\Employee');
     }
-    */
+    
 }

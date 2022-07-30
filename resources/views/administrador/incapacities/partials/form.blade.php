@@ -1,11 +1,11 @@
 @if (!empty($incapacity))
-<div class="form-group">
-        {!! Form::label('employee', 'Empleado') !!}
+    <div class="form-group">
+    {!! Form::label('employee', 'Empleado') !!}
     {!! Form::text('employee', $employee->full_name , ['class' => 'form-control', 'readonly']) !!}
     </div>
 @else
     <div class="form-group">
-        {!! Form::label('employee', 'Eliga un empleado') !!}
+        {!! Form::label('employee', 'Elije un empleado') !!}
         <select name="employee" id="employee_id" class="form-control">
             @foreach ($employees as $employee)
                 <option value="{{$employee->id}} ">{{$employee->full_name}}</option>
@@ -34,7 +34,7 @@
 <div class="form-group">
     {!! Form::label('start_date', 'Fecha inicio incapacidad') !!}
     <!--<label name="name">Nombre</label>-->
-    {!! Form::text('start_date', null , ['class' => 'form-control'.($errors->has('start_date') ? ' is-invalid':null), 'placeholder' => 'Ingrese la fecha inicial...']) !!}
+    {!! Form::date('start_date', null , ['class' => 'form-control'.($errors->has('start_date') ? ' is-invalid':null), 'placeholder' => 'Ingrese la fecha inicial...']) !!}
     @error('start_date')
         <span class="invalid-feedback" role="alert">
             <strong>*{{ $message }}</strong>
@@ -45,7 +45,7 @@
 <div class="form-group">
     {!! Form::label('end_date', 'Fecha finalización incapacidad') !!}
     <!--<label name="name">Nombre</label>-->
-    {!! Form::text('end_date', null , ['class' => 'form-control'.($errors->has('end_date') ? ' is-invalid':null), 'placeholder' => 'Ingrese la fecha final...']) !!}
+    {!! Form::date('end_date', null , ['class' => 'form-control'.($errors->has('end_date') ? ' is-invalid':null), 'placeholder' => 'Ingrese la fecha final...']) !!}
     @error('end_date')
         <span class="invalid-feedback" role="alert">
             <strong>*{{ $message }}</strong>

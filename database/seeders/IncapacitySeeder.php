@@ -21,7 +21,7 @@ class IncapacitySeeder extends Seeder
             'start_date' => '2022-01-03',
             'end_date' => '2022-03-05',
             'clasification' => 'Inicial',
-            'incapacity_type_id' => 6,
+            'incapacity_type_id' => 7,
             'employee_id' => 2,
 
         ]);
