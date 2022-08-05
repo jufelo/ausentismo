@@ -23,14 +23,29 @@ class Incapacity extends Model
         return "{$this->name} {$this->lastname}";
     }
     
+    public function getTotalDiasAttribute()
+    {
+        //return date_diff($this->start_date, $this->end_date);
+    }
+
+    public function calcular_dias()
+    {
+        $this->total_per_day = $this->end_date-$this->start_date;
+    }
+
+    public function calcular_salario()
+    {
+        $this->salary_per_day = $this->salary / 30;
+    }
+
     /**
      * Get the Incapacity_type for the employee.
      */
 
 
-    //RELACION DE UNO A UNO CON USUARIO
-    public function user()
+    public function employee()
     {
-        return $this->hasOne(Incapacity::class);
+        return $this->belongsTo(Employee::class);
     }
+
 }

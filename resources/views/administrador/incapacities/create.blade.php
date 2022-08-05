@@ -7,14 +7,18 @@
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            {!! Form::open(['route' => 'administrador.incapacities.store']) !!}
-                @include('administrador.incapacities.partials.form')
+    @if(request()->query('tipo') == 'real')
+        @livewire('administrador.incapacity-create', ['employees' => $employees, 'listaIncapacidades' => $listaIncapacidades])
+    @else
+        <div class="card">
+            <div class="card-body">
+                {!! Form::open(['route' => 'administrador.incapacities.store']) !!}
+                    @include('administrador.incapacities.partials.form')
                 {!! Form::submit('Crear Incapacidad',['class' => 'btn btn-primary btn.sm']) !!}
-            {!! Form::close() !!}
+                {!! Form::close() !!}
+            </div>
         </div>
-    </div>
+    @endif
 @stop
 
 @section('css')

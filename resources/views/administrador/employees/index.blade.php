@@ -3,7 +3,8 @@
 @section('title', 'Empleado')
 
 @section('content_header')
-<a href="{{route('administrador.employees.create')}}" class="btn btn-primary btn-sm float-right">Crear empleado</a>
+<a href="{{route('administrador.employees.create')}}" class="btn btn-primary btn-sm float-right"><i
+    class="fa-plus-circle fas "></i><span class="mx-1">Crear empleado</span></a>
 <h3>Gestión de empleados</h3>
 @stop
 
@@ -42,12 +43,12 @@
                             <td>{{$employee->eps}}</td>
                             <td>{{$employee->arl}}</td>
                             <td>{{$employee->afp}}</td>
-                            <td width="10px"><a href="{{route('administrador.employees.edit',$employee)}}" class="btn btn-success btn-sm">Editar</td>
+                            <td width="10px"><a href="{{route('administrador.employees.edit',$employee)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></td>
                             <td width="10px">
                                 <form action="{{route('administrador.employees.destroy',$employee)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>    
                         </tr>
@@ -73,7 +74,7 @@
                 responsive:true,
                 autoWidth:false,
                 //scrollX: true,
-                columnDefs: [{ orderable: false, targets: [9,10] }],
+                columnDefs: [{ orderable: false, targets: [10,11] }],
                 //order: [[2, 'asc']],
                 "language":{
                     "lengthMenu":"Mostrar "+

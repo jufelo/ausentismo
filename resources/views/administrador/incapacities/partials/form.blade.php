@@ -19,17 +19,15 @@
     {!! Form::select('incapacity_type_id', $listaIncapacidades, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el tipo de incapacidad...']) !!}
 </div>
 
-{{--}}
 <div class="form-group">
-    {!! Form::label('cie10', 'Código enfermedad CIE10') !!}
-    <!--<label name="name">Nombre</label>-->
-    {!! Form::text('cie10', null , ['class' => 'form-control'.($errors->has('cie10') ? ' is-invalid':null), 'placeholder' => 'Seleccione el código de enfermedad CIE10...']) !!}
-    @error('cie10')
-    <span class ="invalid-feedback" role="alert">
-        <strong>*{{ $message }}</strong>
-    </span>
-@enderror
-</div>--}}
+    {!! Form::label('cie_10', 'Código CIE10') !!}
+    <select name="cie_10" id="cie_10_id" class="form-control">
+        <option>Seleccione el código...</option>
+        @foreach ($cie_10s as $cie_10)
+            <option value="{{$cie_10->id}} ">{{$cie_10->code}} {{$cie_10->name}}</option>
+        @endforeach
+    </select>
+</div>
 
 <div class="form-group">
     {!! Form::label('start_date', 'Fecha inicio incapacidad') !!}
@@ -54,9 +52,9 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('Clasification', 'Clasificación') !!}
+    {!! Form::label('clasification', 'Clasificación') !!}
     <!--<label name="name">Nombre</label>-->
-    {!! Form::select('clasification', ['Inicial' => 'Inicial', 'Prorroga' => 'Prorroga'], null, ['class' => 'form-control'.($errors->has('clasification') ? ' is-invalid':''), 'placeholder' => 'Seleccione tipo de clasificación...']) !!}
+    {!! Form::select('clasification', ['Inicial' => 'Inicial', 'Prorroga' => 'Prorroga'], null, ['class' => 'form-control'.($errors->has('clasification') ? ' is-invalid':''), 'placeholder' => 'Seleccione el tipo de clasificación...']) !!}
     @error('clasification')
         <span class ="invalid-feedback" role="alert">
             <strong>*{{ $message }}</strong>

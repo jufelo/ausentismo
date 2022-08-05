@@ -3,7 +3,8 @@
 @section('title', 'Usuario')
 
 @section('content_header')
-<a href="{{route('administrador.users.create')}}" class="btn btn-primary btn-sm float-right">Crear usuario</a>
+<a href="{{route('administrador.users.create')}}" class="btn btn-primary btn-sm float-right"><i
+    class="fa-plus-circle fas "></i><span class="mx-1">Crear usuario</span></a>
 <h3>Gestión de usuarios</h3>
     
 @stop
@@ -33,12 +34,12 @@
                                     <span class="badge badge-info">{{ $role->name}}</span>
                                 @endforeach
                             </td>
-                            <td width="10px"><a href="{{route('administrador.users.edit',$user)}}" class="btn btn-success btn-sm">Editar</td>
+                            <td width="10px"><a href="{{route('administrador.users.edit',$user)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></td>
                             <td width="10px">
                                 <form action="{{route('administrador.users.destroy',$user)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>    
                         </tr>

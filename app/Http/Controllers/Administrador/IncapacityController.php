@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrador;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\IncapacityStoreRequest;
+use App\Models\Cie_10;
 use App\Models\Employee;
 use App\Models\Incapacity;
 use App\Models\Incapacity_type;
@@ -23,8 +24,11 @@ class IncapacityController extends Controller
         $employees = Employee::all();
         $incapacities = Incapacity::all();
         $incapacity_types = Incapacity_type::all();
+        $cie_10s = Cie_10::all();
+        //$employees = Employee::with('incapacity')->get();
+        //dd($incapacities);
         
-        return view('administrador.incapacities.index', compact('employees', 'incapacities','incapacity_types'));
+        return view('administrador.incapacities.index', compact('employees', 'incapacities','incapacity_types', 'cie_10s'));
     }
 
     /**
@@ -36,8 +40,9 @@ class IncapacityController extends Controller
     {
         $employees = Employee::all();
         $listaIncapacidades = Incapacity_type::pluck('name','id');
-        //dd($listaIncapacidades);
-        return view('administrador.incapacities.create', compact('employees', 'listaIncapacidades'));
+        $cie_10s = Cie_10::all();
+        //dd($cie_10s);
+        return view('administrador.incapacities.create', compact('employees', 'listaIncapacidades', 'cie_10s'));
     }
 
     /**
@@ -69,7 +74,7 @@ class IncapacityController extends Controller
         catch(Exception $e)
         {
             //dd($request);
-            return "Ha ocurrido un error" .$e;
+            return "Ha ocurrido un error";
         }
     }
 
@@ -96,7 +101,7 @@ class IncapacityController extends Controller
         $employee = Employee::find($incapacity->employee_id);
         $listaIncapacidades = Incapacity_type::pluck('name','id');
         //dd($incapacity);
-        return view('administrador.incapacities.edit', compact('incapacity', 'employees', 'employee', 'listaIncapacidades'));
+        return view('administrador.incapacities.edit', compact('incapacity', 'employees', 'employee', 'listaIncapacidades', 'cie_10s'));
     }
 
     /**

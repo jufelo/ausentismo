@@ -3,7 +3,8 @@
 @section('title', 'Rol')
 
 @section('content_header')
-<a href="{{route('administrador.roles.create')}}" class="btn btn-primary btn-sm float-right">Crear rol</a>
+<a href="{{route('administrador.roles.create')}}" class="btn btn-primary btn-sm float-right"><i
+    class="fa-plus-circle fas "></i><span class="mx-1">Crear rol</span></a>
 <h1>Gestion de roles</h1>
 @stop
 
@@ -25,12 +26,12 @@
                         <tr>
                             <td>{{$role->id}}</td>
                             <td>{{$role->name}}</td>
-                            <td width="10px"><a href="{{route('administrador.roles.edit',$role)}}" class="btn btn-success btn-sm">Editar</a></td>
+                            <td width="10px"><a href="{{route('administrador.roles.edit',$role)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a></td>
                             <td width="10px">
                                 <form action="{{route('administrador.roles.destroy',$role)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
 

@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cie10', function (Blueprint $table) {
+        Schema::create('cie_10s', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->string('description');
-            $table->string('gender');
+            $table->string('name');
             $table->timestamps();
         });
     }

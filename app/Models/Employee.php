@@ -27,15 +27,23 @@ class Employee extends Model
         return "{$this->name} {$this->lastname}";
     }
     
-/*
-    // relacion uno a uno inversa
-    public function user(){
+    public function getSalarioAttribute()
+    {
         
-        return $this->belongsTo('App\Models\User');
+        return number_format($this->salary);
     }
-    */
     
-   
+    public function getSalarioPorDiaAttribute()
+    {
+        
+        return number_format($this->salary / 30, 2);
+    }
+
+
+    public function incapacities()
+    {
+        return $this->hasMany(Incapacity::class);
+    }
     
 }
 
