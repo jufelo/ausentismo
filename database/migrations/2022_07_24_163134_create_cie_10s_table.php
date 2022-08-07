@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->string('name');
-            $table->timestamps();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cie10');
+        Schema::dropIfExists('cie_10s');
     }
 };

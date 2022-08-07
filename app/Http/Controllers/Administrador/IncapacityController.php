@@ -57,13 +57,15 @@ class IncapacityController extends Controller
         {
 
             Employee::find($request->employee);
-            //dd($employee);
+            //dd($request->employee);
             Incapacity::create([
+                'incapacity_type_id' => $request->incapacity_type_id,
+                'employee_id' => $request->employee,
+                'cie_10_id' => $request->cie_10,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
                 'clasification' => $request->clasification,
-                'incapacity_type_id' => $request->incapacity_type_id,
-                'employee_id' => $request->employee
+                
             ]);
             
             Alert::toast('registro incapacidad guardado exitosamente', 'success');
@@ -74,7 +76,7 @@ class IncapacityController extends Controller
         catch(Exception $e)
         {
             //dd($request);
-            return "Ha ocurrido un error";
+            return "Ha ocurrido un error". $e;
         }
     }
 
@@ -100,8 +102,11 @@ class IncapacityController extends Controller
         $employees = Employee::all();
         $employee = Employee::find($incapacity->employee_id);
         $listaIncapacidades = Incapacity_type::pluck('name','id');
-        //dd($incapacity);
-        return view('administrador.incapacities.edit', compact('incapacity', 'employees', 'employee', 'listaIncapacidades', 'cie_10s'));
+        $cie_10s = Cie_10::all();
+        $cie_10 = Cie_10::find($incapacity->cie_10_id);
+
+        //dd($cie_10);
+        return view('administrador.incapacities.edit', compact('incapacity', 'employees', 'employee', 'listaIncapacidades', 'cie_10s', 'cie_10'));
     }
 
     /**

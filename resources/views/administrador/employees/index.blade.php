@@ -15,7 +15,7 @@
         <div class="card-body">
             <table class="table table-striped" id="employees">
                 <thead>
-                    <tr>
+                    <tr class='text-center'>
                         <th>Nombres</th>
                         <th>Apellidos</th>
                         <th>Tipo de identificación</th>
@@ -37,7 +37,7 @@
                             <td>{{$employee->lastname}}</td>
                             <td>{{$employee->ti}}</td>
                             <td>{{$employee->identification}}</td>
-                            <td>{{$employee->salary}}</td>
+                            <td>{{$employee->salario}}</td>
                             <td>{{$employee->position}}</td>
                             <td>{{$employee->work_area}}</td>
                             <td>{{$employee->eps}}</td>

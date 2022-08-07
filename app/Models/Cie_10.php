@@ -11,7 +11,12 @@ class Cie_10 extends Model
 
     protected $fillable = [
 
+        'code',
         'name'
-    ];    
-
+    ];   
+    
+    public function getFullCieAttribute()
+    {
+        return "{$this->code} {$this->name}";
+    }
 }

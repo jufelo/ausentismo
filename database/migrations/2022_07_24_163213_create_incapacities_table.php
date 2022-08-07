@@ -15,12 +15,19 @@ return new class extends Migration
     {
         Schema::create('incapacities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('incapacity_type_id');
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('cie_10_id');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('clasification');
-            $table->unsignedBigInteger('incapacity_type_id');
+            $table->decimal('paid_company')->default(0.0);
+            $table->decimal('paid_eps')->default(0.0);
+            $table->decimal('paid_arl')->default(0.0);
+            $table->decimal('paid_afp')->default(0.0);
+            
+            $table->foreign('cie_10_id')->references('id')->on('cie_10s')->onDelete('cascade');
             $table->foreign('incapacity_type_id')->references('id')->on('incapacity_types')->onDelete('cascade');
-            $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->timestamps();
 

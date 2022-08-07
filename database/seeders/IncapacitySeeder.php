@@ -18,11 +18,13 @@ class IncapacitySeeder extends Seeder
 
         Incapacity::create([
 
+            'incapacity_type_id' => 7,
+            'employee_id' => 2,
+            'cie_10_id' => 1,
             'start_date' => '2022-01-03',
             'end_date' => '2022-03-05',
             'clasification' => 'Inicial',
-            'incapacity_type_id' => 7,
-            'employee_id' => 2,
+            
 
         ]);
 

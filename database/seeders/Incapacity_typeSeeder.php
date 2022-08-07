@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Incapacity_type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class Incapacity_typeSeeder extends Seeder
 {
@@ -15,39 +16,35 @@ class Incapacity_typeSeeder extends Seeder
      */
     public function run()
     {
-        Incapacity_type::create
-        ([
-            'name' => 'Enfermedad común',
-        ]);     
+        $data = [
+            [
+                'name' => 'Enfermedad común',
+            ],   
 
-        Incapacity_type::create
-        ([
-            'name' => 'Licencia de maternidad',
-        ]);
+            [
+                'name' => 'Licencia de maternidad',
+            ],
 
-        Incapacity_type::create
-        ([
-            'name' => 'Licencia de paternidad',
-        ]);
-        
-        Incapacity_type::create
-        ([
-            'name' => 'Accidente de trabajo',
-        ]);
+            [
+                'name' => 'Licencia de paternidad',
+            ],
+            
+            [
+                'name' => 'Accidente de trabajo',
+            ],
 
-        Incapacity_type::create
-        ([
-            'name' => 'Enfermedad laboral',
-        ]);
+            [
+                'name' => 'Enfermedad laboral',
+            ],
 
-        Incapacity_type::create
-        ([
-            'name' => 'Fondo de pensiones',
-        ]);
+            [
+                'name' => 'Fondo de pensiones',
+            ],
 
-        Incapacity_type::create
-        ([
-            'name' => 'Accidente de tránsito',
-        ]);  
+            [
+                'name' => 'Accidente de tránsito',
+            ],
+        ];    
+        DB::table('Incapacity_types')->insert($data);
     }
 }

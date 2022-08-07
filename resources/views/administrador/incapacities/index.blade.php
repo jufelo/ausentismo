@@ -22,6 +22,7 @@
                         <th>Tipo de documento</th>
                         <th>Número de documento</th>
                         <th>Tipo de incapacidad</th>
+                        <th>Código CIE10</th>
                         <th>Cargo</th>
                         <th>Eps</th>
                         <th>Salario</th>
@@ -30,6 +31,11 @@
                         <th>Fecha finalización Incapacidad</th>
                         <th>Total de días</th>
                         <th>Clasificación</th>
+                        <th>Valor incapacidad</th>
+                        <th>Valor asumido empresa</th>
+                        <th>Valor asumido EPS</th>
+                        <th>Valor asumido ARL</th>
+                        <th>Valor asumido AFP</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -37,27 +43,25 @@
                 <tbody>
                     @foreach($incapacities as $incapacity)
                         <tr>
-                            @foreach($employees as $employee)
-                            @if($incapacity->employee_id == $employee->id)
-                            <td>{{$employee->full_name}}</td>
-                            <td>{{$employee->ti}}</td>
-                            <td>{{$employee->identification}}</td>
-                            @endif
-                            @endforeach
-                            @foreach($incapacity_types as $incapacity_type)
-                            @if($incapacity->incapacity_type_id == $incapacity_type->id)
-                            <td>{{$incapacity_type->name}}</td>
-                            <td>{{$employee->position}}</td>
-                            <td>{{$employee->eps}}</td>
-                            <td>{{$employee->salario}}</td>
-                            <td>{{$employee->salario_por_dia}}</td>
-                            @endif
-                            @endforeach
+                            <td>{{$incapacity->employee->full_name}}</td>
+                            <td>{{$incapacity->employee->ti}}</td>
+                            <td>{{$incapacity->employee->identification}}</td>
+                            <td>{{$incapacity->incapacity_type->name}}</td>
+                            <td>{{$incapacity->cie_10->code}}</td>
+                            <td>{{$incapacity->employee->position}}</td>
+                            <td>{{$incapacity->employee->eps}}</td>
+                            <td>{{$incapacity->employee->salario}}</td>
+                            <td>{{$incapacity->employee->salario_por_dia}}</td>
                             <td>{{$incapacity->start_date}}</td>
                             <td>{{$incapacity->end_date}}</td>
                             <td>{{$incapacity->total_dias}}</td>
                             <td>{{$incapacity->clasification}}</td>
-                            </td>
+                            <td>$&nbsp;</td>
+                            <td>${{$incapacity->paid_company}}</td>
+                            <td>${{$incapacity->paid_eps}}</td>
+                            <td>${{$incapacity->paid_arl}}</td>
+                            <td>${{$incapacity->paid_afp}}</td>
+
                             <td width="10px"><a href="{{route('administrador.incapacities.edit',$incapacity)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></td>
                             <td width="10px">
                                 <form action="{{route('administrador.incapacities.destroy',$incapacity)}}" method="POST">
