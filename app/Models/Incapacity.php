@@ -10,12 +10,13 @@ class Incapacity extends Model
     use HasFactory;
 
     protected $fillable = [
+        
+        'employee_id',
+        'incapacity_type_id',
+        'cie_10_id',
         'start_date',
         'end_date',
         'clasification',
-        'cie_10_id',
-        'incapacity_type_id',
-        'employee_id',
 
     ];   
 
@@ -29,24 +30,37 @@ class Incapacity extends Model
         return ((strtotime($this->end_date) - strtotime($this->start_date)) / 60 / 60 / 24);
     }
 
-    //Accidente de trabajo 4 y enfermedad laboral 5 100%
-    public function pago_arl()
+    //Accidente de trabajo (4) y enfermedad laboral (5) 100% pagado por ARL
+    public function getPagoArlAttribute()
     {
-        return $this->total_dias * $this->salario / 30;
-    }
+        if($this->incapacity_type_id == 4 || $this->incapacity_type_id == 5){
 
-    public function calcular_dias()
+            return '$'.number_format(((strtotime($this->end_date) - strtotime($this->start_date)) / 60 / 60 / 24) * $this->employee->salary / 30, 2);
+        }else{
+            return '$'.'0.00';
+        }
+    }
+    
+    //Licencia de maternidad (2) 100% pagado por EPS 120 días, Licencia de paternidad (3) 100% pagado por EPS 14 días
+    public function getPagoEpsAttribute()
     {
-        $this->total_per_day = $this->end_date-$this->start_date;
-    }
+        if($this->incapacity_type_id == 2){
+            return '$'.number_format((120) * $this->employee->salary / 30, 2);
+        }else{
+            if($this->incapacity_type_id == 3){
+                return '$'.number_format((14) * $this->employee->salary / 30, 2);
+            }
+        
+            return '$'.'0.00';
+        
+        }
 
-    public function calcular_salario()
-    {
-        $this->salary_per_day = $this->salary / 30;
+        
     }
-
+    
+    
     /**
-     * Get the Incapacity_type for the employee.
+     * Relationships
      */
 
 

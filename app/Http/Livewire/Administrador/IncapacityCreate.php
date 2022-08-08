@@ -21,14 +21,17 @@ class IncapacityCreate extends Component
     public $salary;
     public $employees;
     public $listaIncapacidades;
+    public $employee_id;
+    public $incapacity_type_id;
 
     protected $rules = 
     [   
         'start_date' => 'required',
         'end_date' => 'required',
-        'incapacity_type' => 'required',
-        'clasification' => 'required',
-        'salary' => 'required'
+        //'incapacity_type' => 'required',
+        //'clasification' => 'required',
+        //'employee_id' => 'required',
+        
     ];
 
     protected $messages = [
@@ -52,7 +55,7 @@ class IncapacityCreate extends Component
 
     public function calcular_dias()
     {
-        $this->total_per_day = $this->end_date-$this->start_date;
+        $this->total_per_day = ((strtotime($this->end_date) - strtotime($this->start_date)) / 60 / 60 / 24);
     }
 
     public function calcular_salario()
@@ -67,12 +70,11 @@ class IncapacityCreate extends Component
 
         Incapacity::create([
             
+            'employee_id' => $this->employee_id,
+            'incapacity_type_id' => $this->incapacity_type_id,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'clasification' => $this->clasification,
-            'salary' => $this->salary,
-            'incapacity_type_id' => $this->incapacity_type_id,
-            'employee_id' => $this->employee_id
 
         ]);
 

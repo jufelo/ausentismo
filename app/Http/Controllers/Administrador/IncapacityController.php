@@ -39,6 +39,7 @@ class IncapacityController extends Controller
     public function create()
     {
         $employees = Employee::all();
+        $incapacities = Incapacity::all();
         $listaIncapacidades = Incapacity_type::pluck('name','id');
         $cie_10s = Cie_10::all();
         //dd($cie_10s);
@@ -76,7 +77,7 @@ class IncapacityController extends Controller
         catch(Exception $e)
         {
             //dd($request);
-            return "Ha ocurrido un error". $e;
+            return "Ha ocurrido un error";
         }
     }
 

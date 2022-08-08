@@ -29,24 +29,17 @@ class Employee extends Model
     
     public function getSalarioAttribute()
     {
-        
         return '$'.number_format($this->salary);
     }
     
     public function getSalarioPorDiaAttribute()
     {
-        
         return '$'.number_format($this->salary / 30, 2);
-    }
-
-    public function getPaidArlAttribute()
-    {
-        return $this->total_dias * $this->salario_por_dia;
     }
 
     public function incapacity()
     {
-        return $this->hasMany(Incapacity::class);
+        return $this->hasone(Incapacity::class);
     }
     
 }

@@ -25,6 +25,7 @@ class EmployeeStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'lastname' => 'required',
             'ti' => 'required',
             'identification' => 'required',
             'salary' => 'required',

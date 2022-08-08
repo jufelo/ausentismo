@@ -23,7 +23,7 @@ class EmployeeSeeder extends Seeder
             'identification' => '123456789',
             'salary' => '1000000',
             'position' => 'Desarrollador Web',
-            'work_area' => 'Desarrollo',
+            'work_area' => 'PHP-Laravel',
             'eps' => 'Sura',
             'arl' => 'Sura',
             'afp' => 'Protección'
@@ -31,16 +31,16 @@ class EmployeeSeeder extends Seeder
 
         Employee::create
         ([
-            'name' => 'Mateo',
-            'lastname' => 'López',
+            'name' => 'Sandra',
+            'lastname' => 'Ceballos',
             'ti' => 'Cédula',
             'identification' => '987654321',
             'salary' => '2000000',
             'position' => 'Gerente',
             'work_area' => 'Comercial',
-            'eps' => 'Sura',
+            'eps' => 'Nueva eps',
             'arl' => 'Sura',
-            'afp' => 'Protección'
+            'afp' => 'Colfondos'
         ]);
 
     }

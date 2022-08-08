@@ -31,7 +31,6 @@
                         <th>Fecha finalización Incapacidad</th>
                         <th>Total de días</th>
                         <th>Clasificación</th>
-                        <th>Valor incapacidad</th>
                         <th>Valor asumido empresa</th>
                         <th>Valor asumido EPS</th>
                         <th>Valor asumido ARL</th>
@@ -56,11 +55,10 @@
                             <td>{{$incapacity->end_date}}</td>
                             <td>{{$incapacity->total_dias}}</td>
                             <td>{{$incapacity->clasification}}</td>
-                            <td>$&nbsp;</td>
-                            <td>${{$incapacity->paid_company}}</td>
-                            <td>${{$incapacity->paid_eps}}</td>
-                            <td>${{$incapacity->paid_arl}}</td>
-                            <td>${{$incapacity->paid_afp}}</td>
+                            <td>{{$incapacity->pago_compania}}</td>
+                            <td>{{$incapacity->pago_eps}}</td>
+                            <td>{{$incapacity->pago_arl}}</td>
+                            <td>{{$incapacity->pago_afp}}</td>
 
                             <td width="10px"><a href="{{route('administrador.incapacities.edit',$incapacity)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></td>
                             <td width="10px">
