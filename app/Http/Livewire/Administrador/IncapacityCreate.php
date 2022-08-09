@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Administrador;
 
+use App\Models\Cie_10;
 use App\Models\Employee;
 use App\Models\Incapacity;
 use Livewire\Component;
@@ -23,6 +24,7 @@ class IncapacityCreate extends Component
     public $listaIncapacidades;
     public $employee_id;
     public $incapacity_type_id;
+    public $cie_10s = [];
 
     protected $rules = 
     [   

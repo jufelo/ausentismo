@@ -1,10 +1,11 @@
+<div class="form-row">
 @if (!empty($incapacity))
     <div class="form-group">
         {!! Form::label('employee', 'Empleado') !!}
         {!! Form::text('employee', $employee->full_name , ['class' => 'form-control', 'readonly']) !!}
     </div>
 @else
-    <div class="form-group">
+    <div class="form-group col-md-6">
         {!! Form::label('employee', 'Empleado') !!}
         <select name="employee" id="employee_id" class="form-control">
             <option>Seleccione el empleado...</option>
@@ -15,7 +16,7 @@
     </div>
     
 @endif
-<div class="form-group">
+<div class="form-group col-md-6">
     {!! Form::label('incapacity_type_id', 'Tipo de incapacidad') !!}
     {!! Form::select('incapacity_type_id', $listaIncapacidades, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el tipo de incapacidad...']) !!}
 </div>
@@ -40,7 +41,7 @@
 
 
 
-<div class="form-group">
+<div class="form-group col-md-4">
     {!! Form::label('start_date', 'Fecha inicio incapacidad') !!}
     <!--<label name="name">Nombre</label>-->
     {!! Form::date('start_date', null , ['class' => 'form-control'.($errors->has('start_date') ? ' is-invalid':null), 'placeholder' => 'Ingrese la fecha inicial...']) !!}
@@ -51,7 +52,7 @@
     @enderror
 </div>
 
-<div class="form-group">
+<div class="form-group col-md-4">
     {!! Form::label('end_date', 'Fecha finalización incapacidad') !!}
     <!--<label name="name">Nombre</label>-->
     {!! Form::date('end_date', null , ['class' => 'form-control'.($errors->has('end_date') ? ' is-invalid':null), 'placeholder' => 'Ingrese la fecha final...']) !!}
@@ -62,7 +63,7 @@
     @enderror
 </div>
 
-<div class="form-group">
+<div class="form-group col md-4">
     {!! Form::label('clasification', 'Clasificación') !!}
     <!--<label name="name">Nombre</label>-->
     {!! Form::select('clasification', ['Inicial' => 'Inicial', 'Prorroga' => 'Prorroga'], null, ['class' => 'form-control'.($errors->has('clasification') ? ' is-invalid':''), 'placeholder' => 'Seleccione el tipo de clasificación...']) !!}
@@ -71,4 +72,5 @@
             <strong>*{{ $message }}</strong>
         </span>
     @enderror
+</div>
 </div>

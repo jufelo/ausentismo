@@ -13,23 +13,27 @@
     <div class="card">
         <div class="card-body">
             {!! Form::open(['route' => 'administrador.users.store']) !!}
-            <div class="form-group">
-                {!! Form::label('employee', 'Empleado') !!}
-                <select name="employee" id="employee_id" class="form-control">
-                    <option value="">Seleccione un empleado...</option>
-                    @foreach ($employees as $employee)
-                        <option value="{{$employee->id}} ">{{$employee->name}} {{$employee->lastname}}</option>
-                    @endforeach
-                </select>
-            </div> 
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    {!! Form::label('employee', 'Empleado') !!}
+                    <select name="employee" id="employee_id" class="form-control">
+                        <option value="">Seleccione un empleado...</option>
+                        @foreach ($employees as $employee)
+                            <option value="{{$employee->id}} ">{{$employee->name}} {{$employee->lastname}}</option>
+                        @endforeach
+                    </select>
+                </div> 
             @include('administrador.users.partials.form')
             <div class="form-group">
                 {!! Form::label('roles', 'Rol') !!}
                 {!! Form::select('roles', $listaRoles, null, ['class' => 'form-control', 'placeholder' => 'Seleccione un rol...']) !!}
-            </div>
+                <br>
                 {!! Form::submit('Crear usuario',['class' => 'btn btn-primary btn.sm']) !!}
                 {!! Form::close() !!}
+            </div>
         </div>
+        </div>
+    
     </div>
 @stop
 
