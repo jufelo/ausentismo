@@ -60,7 +60,7 @@ class IncapacityCreate extends Component
 
     public function calcular_salario()
     {
-        $this->salary_per_day = $this->salary / 30;
+        $this->salary_per_day = $this->employee->salary / 30;
     }
 
     public function store()

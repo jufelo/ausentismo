@@ -55,7 +55,7 @@
                             <td>{{$incapacity->end_date}}</td>
                             <td>{{$incapacity->total_dias}}</td>
                             <td>{{$incapacity->clasification}}</td>
-                            <td>{{$incapacity->pago_compania}}</td>
+                            <td>{{$incapacity->pago_empleador}}</td>
                             <td>{{$incapacity->pago_eps}}</td>
                             <td>{{$incapacity->pago_arl}}</td>
                             <td>{{$incapacity->pago_afp}}</td>

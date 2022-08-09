@@ -37,6 +37,7 @@ class Employee extends Model
         return '$'.number_format($this->salary / 30, 2);
     }
 
+    //Relationship
     public function incapacity()
     {
         return $this->hasone(Incapacity::class);

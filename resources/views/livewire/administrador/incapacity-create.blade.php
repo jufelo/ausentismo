@@ -14,7 +14,7 @@
 --}}        
         <div class="form-group">
             {!! Form::label('employee', 'Empleado') !!}
-            <select name="employee" id="employee_id" class="form-control" wire:keyup='calcular_salario()'>
+            <select name="employee" id="employee_id" class="form-control" wire:model = 'employee' wire:change = 'calcular_salario()'>
                 <option>Seleccione el empleado...</option>
                 @foreach ($employees as $employee)
                     <option value="{{$employee->id}} ">{{$employee->full_name}}</option>
