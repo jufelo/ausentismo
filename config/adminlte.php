@@ -15,8 +15,8 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'Ausentismo | ',
-    'title_postfix' => '',
+    'title_prefix' => '',
+    'title_postfix' => '| Ausentismo SST',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -45,9 +45,10 @@ return [
     |
     */
 
-    'logo' => '<b>Ausentismo</b> Laboral',
+    'logo' => '<ul class="fa-ul mb-0">
+    <li><span class="fa-li"><i class="fas fa-hard-hat fa-lg text-yellow"></i></span>Empresa <span class="font-weight-bold">SST</span></li></ul>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img_class' => 'brand-image img-circle elevation-3 d-none',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Ausentismo',
@@ -66,7 +67,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header_class' => 'bg-navy',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -85,8 +86,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -122,14 +123,14 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
+    'classes_brand' => 'bg-navy',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
-    'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_sidebar' => 'sidebar-dark-warning elevation-4',
+    'classes_sidebar_nav' => 'nav-child-indent',
+    'classes_topnav' => 'navbar-navy navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -188,7 +189,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -225,8 +226,31 @@ return [
     */
 
     'menu' => [
+        // Navbar items:
+        /* [
+             'type'         => 'navbar-search',
+             'text'         => 'search',
+             'topnav_right' => true,
+         ],*/
+        [
+            'type' => 'fullscreen-widget',
+            'topnav_right' => true,
+        ],
 
         // Sidebar items:
+
+        [
+            'type' => 'sidebar-menu-search',
+            'text' => 'search',
+        ],
+        [
+            'text' => 'Dashboard',
+            'route' => 'home',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+
+        ['header' => 'ADMINISTRADOR'],
+
         [
             'text' => 'Usuarios',
             'route'  => 'administrador.users.index',
@@ -234,9 +258,6 @@ return [
             'active' => ['administrador/users*'],
             //'can' => 'administrador.users.index'
         ],
-
-        ['header' => 'ADMINISTRADOR'],
-        
         [
             'text' => 'Roles',
             'route'  => 'administrador.roles.index',
@@ -249,6 +270,9 @@ return [
             'icon' => 'fas fa-fw fa-users',
             'active' => ['administrador/employees*']
         ],
+
+        ['header' => 'GESTIÓN'],
+
         [
             'text' => 'Ausentismo',
             'route'  => 'administrador.incapacities.index',
@@ -260,9 +284,8 @@ return [
             'text' => 'Consulta CIE10',
             'url'  => 'https://web.sispro.gov.co/WebPublico/Consultas/ConsultarDetalleReferenciaBasica.aspx?Code=CIE10',
             //'url'  => 'https://cpockets.com/cie10',
-            'icon' => 'fas fa-fw fa-globe',
+            'icon' => 'fas fa-fw fa-notes-medical',
             'active' => ['administrador/#']
-
         ],
         [
             'text'    => 'Reportes',
@@ -329,22 +352,12 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'location' => '//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap4.min.css',
+                    'location' => '//cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'js',
@@ -354,7 +367,62 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap4.min.js',
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/fixedheader/3.2.4/js/dataTables.fixedHeader.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/fixedheader/3.2.4/css/fixedHeader.dataTables.min.css',
                 ],
             ],
         ],

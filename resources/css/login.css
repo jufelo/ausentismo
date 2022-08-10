@@ -1,0 +1,50 @@
+.container-login-form {
+    box-shadow: rgba(0, 0, 0, 0.07) 16px 25px 34px -20px;
+}
+
+.bg-navy {
+    background-color: #001f3f;
+    color: #fff;
+}
+
+.text-navy {
+    color: #001f3f;
+}
+
+.login-text {
+    font-size: 1.75rem;
+}
+
+.inputs-icon {
+    border-color: #001f3f;
+    padding: 6px 40px;
+}
+
+.inputs-icon:focus {
+    border-color: #001f3f47;
+    box-shadow: 0 0 4px 0.15rem rgba(0, 31, 63, 0.25);
+}
+
+.class_title {
+    cursor: pointer;
+}
+
+.class_title::after {
+    display: none;
+    content: attr(data-title);
+    color: white;
+    font-family: system-ui;
+    font-size: 0.85rem;
+    padding: 5px 8px;
+    background: rgba(0, 31, 63, .7);
+    border-radius: 5px;
+    position: absolute;
+    top: 2px;
+    left: -51px;
+    z-index: 1;
+    font-weight: normal;
+}
+
+.class_title:hover::after {
+    display: block;
+}
