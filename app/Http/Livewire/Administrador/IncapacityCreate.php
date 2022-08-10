@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire\Administrador;
 
-use App\Models\Cie_10;
-use App\Models\Employee;
 use App\Models\Incapacity;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -13,6 +11,7 @@ class IncapacityCreate extends Component
     
     public $name;
     public $lastname;
+    public $incapacity_types;
     public $incapacity_type;
     public $start_date;
     public $end_date;
@@ -35,12 +34,15 @@ class IncapacityCreate extends Component
         'start_date' => 'required',
         'end_date' => 'required',
         //'incapacity_type' => 'required',
-        //'clasification' => 'required',
+        'clasification' => 'required',
         //'employee_id' => 'required',
         
     ];
 
     protected $messages = [
+        
+        'start_date.required' => 'La fecha inicial es requerida',
+        'end_date.required' => 'La fecha final es requerida',
         'name.required' => 'El nombre es requerido.',
         'lastname.required' => 'El apellido es requerido.',
         'clasification.required' => 'La clasificación es requerida.',
@@ -86,8 +88,8 @@ class IncapacityCreate extends Component
 
         ]);
 
-        Alert::toast('Empleado guardado correctamente','success');
-        return redirect()->route('administrador.incapacity.index');
+        Alert::toast('Registro de incapacidad guardado correctamente','success');
+        return redirect()->route('administrador.incapacities.index');
     }
     public function render()
     {
