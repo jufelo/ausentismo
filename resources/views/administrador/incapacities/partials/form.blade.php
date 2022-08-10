@@ -1,6 +1,6 @@
 <div class="form-row">
 @if (!empty($incapacity))
-    <div class="form-group">
+    <div class="form-group col-md-4">
         {!! Form::label('employee', 'Empleado') !!}
         {!! Form::text('employee', $employee->full_name , ['class' => 'form-control', 'readonly']) !!}
     </div>
@@ -16,17 +16,17 @@
     </div>
     
 @endif
-<div class="form-group col-md-6">
+<div class="form-group col-md-4">
     {!! Form::label('incapacity_type_id', 'Tipo de incapacidad') !!}
     {!! Form::select('incapacity_type_id', $listaIncapacidades, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el tipo de incapacidad...']) !!}
 </div>
 @if (!empty($incapacity))
-    <div class="form-group">
+    <div class="form-group col-md-4">
         {!! Form::label('cie_10', 'Código CIE10') !!}
         {!! Form::text('cie_10', $cie_10->full_cie, ['class' => 'form-control', 'readonly']) !!}
     </div>
 @else
-    <div class="form-group">
+    <div class="form-group col-md-4">
         {!! Form::label('cie_10', 'Código CIE10') !!}
         <select name="cie_10" id="cie_10_id" class="form-control">
             <option>Seleccione el código...</option>
