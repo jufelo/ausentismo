@@ -8,7 +8,7 @@
 
 @section('content')
     @if(request()->query('tipo') == 'real')
-        @livewire('administrador.incapacity-create', ['employees' => $employees, 'listaIncapacidades' => $listaIncapacidades])
+        @livewire('administrador.incapacity-create', ['employees' => $employees, 'listaIncapacidades' => $listaIncapacidades, 'cie_10s' => $cie_10s])
     @else
         <div class="card">
             <div class="card-body">

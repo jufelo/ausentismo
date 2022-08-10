@@ -19,4 +19,11 @@ class Cie_10 extends Model
     {
         return "{$this->code} {$this->name}";
     }
+
+    //Relationship
+    public function incapacities()
+    {
+        return $this->hasmany(Incapacity::class);
+    }
+
 }

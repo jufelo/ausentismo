@@ -12,6 +12,13 @@ class Incapacity_type extends Model
     protected $fillable = [
 
         'name'
-    ];    
+    ];   
+    
+    //Relationship
+    public function incapacities()
+    {
+        return $this->belongsTo(Incapacity::class);
+    }
+    
 
 }

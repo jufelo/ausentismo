@@ -20,11 +20,15 @@ class IncapacityCreate extends Component
     public $total_per_day;
     public $salary_per_day;
     public $salary;
+    public $Employees;
     public $employees;
+    public $employee;
     public $listaIncapacidades;
     public $employee_id;
     public $incapacity_type_id;
-    public $cie_10s = [];
+    public $cie_10s;
+    public $cie_10;
+    public $cie_10_id;
 
     protected $rules = 
     [   
@@ -62,7 +66,7 @@ class IncapacityCreate extends Component
 
     public function calcular_salario()
     {
-        $this->salary_per_day = $this->employee->salary / 30;
+        $this->salary_per_day = $this->salary / 30;
     }
 
     public function store()
@@ -72,11 +76,13 @@ class IncapacityCreate extends Component
 
         Incapacity::create([
             
-            'employee_id' => $this->employee_id,
             'incapacity_type_id' => $this->incapacity_type_id,
+            'employee_id' => $this->employee_id,
+            'cie_10_id' => $this->cie_10_id,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'clasification' => $this->clasification,
+            
 
         ]);
 

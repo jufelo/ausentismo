@@ -38,9 +38,9 @@ class Employee extends Model
     }
 
     //Relationship
-    public function incapacity()
+    public function incapacities()
     {
-        return $this->hasone(Incapacity::class);
+        return $this->hasmany(Incapacity::class);
     }
     
 }
