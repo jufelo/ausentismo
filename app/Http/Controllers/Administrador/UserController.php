@@ -18,20 +18,18 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function index()
     {
-        //$users = User::all();
         $users = User::where('status', '1')->get();
-        //dd($users);
         return view('administrador.users.index', compact('users'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function create()
     {
@@ -45,7 +43,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function store(UserStoreRequest $request)
     {
@@ -74,26 +72,20 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
         //$employees = Employee::pluck('full_name','id');
+        $userRoles = $user->getRoleNames()->all();
         $employees = Employee::all();
         $listaRoles = Role::all();
-        //dd($listaRoles);
-        return view('administrador.users.edit',compact('user','listaRoles','employees'));
+        return view('administrador.users.edit',compact('user','listaRoles','employees', 'userRoles'));
     }
 
     /**
@@ -101,7 +93,7 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function update(UserUpdateRequest $request, User $user)
     {
@@ -139,7 +131,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function destroy(User $user)
     {
@@ -150,12 +142,12 @@ class UserController extends Controller
             ]);
             Alert::toast('Usuario eliminado exitosamente','success');
             return redirect()->route('administrador.users.index');
-        }    
+        }
         catch(Exception $e)
         {
             Alert::toast('Error en la eliminación de usuario','error');
             return redirect()->route('administrador.users.index');
-        }    
-            
+        }
+
     }
 }
