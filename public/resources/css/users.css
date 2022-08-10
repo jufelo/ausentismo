@@ -1,0 +1,128 @@
+i {
+    cursor: pointer;
+}
+
+td, th {
+    vertical-align: middle !important;
+}
+
+.filters th {
+    padding: 0 !important;
+}
+
+.number-th {
+    width: 2rem;
+}
+
+.roles-th {
+    width: 8rem;
+}
+
+.actions-th {
+    width: 5rem;
+}
+
+.filters th input {
+    border-radius: .3rem !important;
+    text-align: center;
+    font-size: small;
+    width: 100% !important;
+}
+
+.dataTables_info {
+    font-size: small !important;
+    padding: 5px 0 0 3px !important;
+}
+
+.dataTables_paginate .pagination {
+    font-size: small;
+    margin: 0 !important;
+}
+
+.page-item.active .page-link {
+    background-color: #00003f !important;
+    border-color: #00003f !important;
+    color: #ffffff !important;
+}
+
+.page-link {
+    color: #00003f !important;
+}
+
+.page-link:focus {
+    box-shadow: none !important;
+}
+
+.dataTables_length, .dataTables_filter {
+    font-size: smaller;
+}
+
+.dt-buttons {
+    width: fit-content !Important;
+}
+
+.dt-down-arrow {
+    color: #ffffff !important;
+    padding: 0 0 0 3px !important;
+}
+
+.dt-button-collection {
+    width: auto !important;
+}
+
+.dt-button-collection div {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-columnVisibility {
+    background: #001f3f !important;
+    border-color: #001f3f !important;
+    border-radius: 7px !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    margin: 1px 0 !important;
+    padding: 0 2px !important;
+}
+
+.buttons-columnVisibility:not(.active) {
+    background: #ffffff !important;
+    color: #001f3f !important;
+}
+
+button.dt-button.active:focus:not(.disabled) {
+    background: rgba(13, 41, 63, 0.88) !important;
+}
+
+.buttons-colvisRestore {
+    background: #28a745 !important;
+    border-radius: 7px !important;
+    color: #ffffff !important;
+    margin: 1px 0 !important;
+    padding: 0 2px !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 12px;
+    background-color: rgb(255, 193, 7);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    height: 12px;
+    background-color: #ffc107;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.1);
+}

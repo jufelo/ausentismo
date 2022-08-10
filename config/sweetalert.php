@@ -161,7 +161,7 @@ return [
     |
     */
 
-    'timer_progress_bar' => env('SWEET_ALERT_TIMER_PROGRESS_BAR', false),
+    'timer_progress_bar' => env('SWEET_ALERT_TIMER_PROGRESS_BAR', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -194,17 +194,17 @@ return [
 
     'customClass' => [
 
-        'container' => env('SWEET_ALERT_CONTAINER_CLASS'),
+        'container' => env('SWEET_ALERT_CONTAINER_CLASS', 'mt-3'),
         'popup' => env('SWEET_ALERT_POPUP_CLASS'),
         'header' => env('SWEET_ALERT_HEADER_CLASS'),
-        'title' => env('SWEET_ALERT_TITLE_CLASS'),
+        'title' => env('SWEET_ALERT_TITLE_CLASS', 'm-0'),
         'closeButton' => env('SWEET_ALERT_CLOSE_BUTTON_CLASS'),
         'icon' => env('SWEET_ALERT_ICON_CLASS'),
         'image' => env('SWEET_ALERT_IMAGE_CLASS'),
         'content' => env('SWEET_ALERT_CONTENT_CLASS'),
         'input' => env('SWEET_ALERT_INPUT_CLASS'),
-        'actions' => env('SWEET_ALERT_ACTIONS_CLASS'),
-        'confirmButton' => env('SWEET_ALERT_CONFIRM_BUTTON_CLASS'),
+        'actions' => env('SWEET_ALERT_ACTIONS_CLASS', 'm-0'),
+        'confirmButton' => env('SWEET_ALERT_CONFIRM_BUTTON_CLASS', 'bg-navy px-4 py-1 shadow-none'),
         'cancelButton' => env('SWEET_ALERT_CANCEL_BUTTON_CLASS'),
         'footer' => env('SWEET_ALERT_FOOTER_CLASS'),
     ],

@@ -1,0 +1,56 @@
+.class_title {
+    cursor: pointer;
+    right: 0;
+    bottom: 0;
+}
+
+.class_title::after {
+    display: none;
+    content: attr(data-title);
+    color: black;
+    font-family: system-ui;
+    font-size: 0.7rem;
+    padding: 5px 8px;
+    background: rgb(248 248 248 / 44%);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    z-index: 1;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.class_title:hover::after {
+    display: block;
+}
+
+.card-select-dashboard {
+    bottom: 0;
+    left: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 12px;
+    background-color: rgb(255, 193, 7);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    height: 12px;
+    background-color: #ffc107;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.1);
+}

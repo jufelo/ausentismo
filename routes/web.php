@@ -34,4 +34,4 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->get('/',[HomeController::class,'index'])->name('name');
+])->get('/',[HomeController::class,'index'])->name('home');
