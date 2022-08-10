@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Administrador;
 
+use App\Models\Employee;
 use App\Models\Incapacity;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -68,7 +69,9 @@ class IncapacityCreate extends Component
 
     public function calcular_salario()
     {
-        $this->salary_per_day = $this->salary / 30;
+        $employees = Employee::all();
+        //dd($employees);
+        $this->salary_per_day = $this->employees->salary / 30;
     }
 
     public function store()

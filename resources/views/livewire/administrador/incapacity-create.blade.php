@@ -15,7 +15,7 @@
 
                     <div class="form-group col-md-4">
                         {!! Form::label('salary_per_day', 'Salario por Día') !!}
-                        {!! Form::text('salary_per_day', $salary_per_day , ['class' => 'form-control', 'readonly']) !!}
+                        {!! Form::text('salary_per_day', $this->salary_per_day , ['class' => 'form-control', 'readonly']) !!}
                     </div>
 
                     <div class="form-group col-md-4">
