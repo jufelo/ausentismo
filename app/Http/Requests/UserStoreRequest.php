@@ -24,8 +24,10 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'employee' => 'required',
             'email' => 'required',
             'password' => 'required',
+            'role' => 'required',
         ];
     }
 
@@ -33,8 +35,9 @@ class UserStoreRequest extends FormRequest
    {
         return
         [
+            
             'email.required' => 'Debe ingresar un correo',
             'password.required' => 'Debe ingresar una contraseña'
         ];
-   } 
+   }
 }

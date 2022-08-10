@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('email').value.length > 4)
+    if (document.getElementById('email').value.length > 3)
         document.getElementById('password').removeAttribute('disabled');
     else
         document.getElementById('password').setAttribute('disabled', '');
@@ -37,7 +37,7 @@ for (let input of document.getElementsByClassName('inputs-icon')) {
             }
         } else {
             if (input.id === 'email') {
-                if (input.value.length > 4) {
+                if (input.value.length > 3) {
                     document.getElementById('password').removeAttribute('disabled');
                     document.getElementById('send_btn').removeAttribute('disabled');
                 } else {

@@ -27,7 +27,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach($users as $key=>$user)
                         <tr>
                             <td class="text-center">{{ $key + 1 }}</td>
@@ -90,7 +89,7 @@
                             {
                                 'extend': 'excelHtml5',
                                 'title': 'Usuarios',
-                                'text': '<i class="fas fa-lg fa-file-excel"></input>',
+                                'text': '<i class="fas fa-lg fa-file-excel"></i>',
                                 'autoFilter': true,
                                 'sheetName': 'Usuarios',
                                 'titleAttr': 'Exportar a Excel',
@@ -102,8 +101,8 @@
                             {
                                 'extend': 'pdfHtml5',
                                 'title': 'Usuarios',
-                                'text': '<i class="fas fa-lg fa-file-pdf"></input>',
-                                'titleAttr': 'Exportar a Excel',
+                                'text': '<i class="fas fa-lg fa-file-pdf"></i>',
+                                'titleAttr': 'Exportar a PDF',
                                 'orientation': 'portrait',
                                 'pageSize': 'LETTER',
                                 'className': 'bg-danger rounded w-auto',
