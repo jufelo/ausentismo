@@ -26,8 +26,8 @@
                         <tr>
                             <td>{{$role->id}}</td>
                             <td>{{$role->name}}</td>
-                            <td width="10px"><a href="{{route('administrador.roles.edit',$role)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a></td>
-                            <td width="10px">
+                            <td><a href="{{route('administrador.roles.edit',$role)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a></td>
+                            <td>
                                 <form action="{{route('administrador.roles.destroy',$role)}}" method="POST">
                                     @csrf
                                     @method('delete')

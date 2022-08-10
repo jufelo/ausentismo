@@ -6,6 +6,33 @@ td, th {
     vertical-align: middle !important;
 }
 
+.class_title {
+    cursor: pointer;
+    right: 0;
+    bottom: 0;
+}
+
+.class_title::after {
+    display: none;
+    content: attr(data-title);
+    color: #ffffff;
+    font-family: system-ui;
+    font-size: 0.7rem;
+    padding: 5px 8px;
+    background: rgb(0 31 63 / 70%);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 29px;
+    z-index: 1;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.class_title:hover::after {
+    display: block;
+}
+
 .filters th {
     padding: 0 !important;
 }

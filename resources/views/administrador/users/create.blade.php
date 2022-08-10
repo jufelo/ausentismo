@@ -3,16 +3,27 @@
 @section('title', 'Usuario')
 
 @section('content_header')
-    <h3>Crear usuario</h3>
+    <div>
+        <div class="align-items-center d-flex justify-content-between">
+            <h3 class="mb-1">Crear usuario</h3>
+            <div class="d-flex align-items-center">
+                <a href="{{ route('administrador.users.index') }}" class="position-relative">
+                    <i class="fas fa-arrow-alt-circle-left fa-lg mr-2 text-warning class_title" data-title="Atrás"></i>
+                </a>
+                <a href="{{ route('home') }}" class="position-relative">
+                    <i class="fas fa-home fa-lg text-navy class_title" data-title="Ir al Inicio"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('content')
-    <!--<p>Contenido en construcción</p>-->
     <div class="card">
         <div class="card-body">
             {!! Form::open(['route' => 'administrador.users.store']) !!}
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-sm-6 col-md-4 order-1">
                     {!! Form::label('employee', 'Empleado') !!}
                     <select name="employee" id="employee_id" class="form-control">
                         <option value="">Seleccione un empleado...</option>
@@ -21,12 +32,14 @@
                         @endforeach
                     </select>
                 </div>
+
                 @include('administrador.users.partials.form')
-                <div class="form-group col-sm-8 col-md-4">
+
+                <div class="form-group col-sm-5 col-md-4 order-4">
                     {!! Form::label('roles', 'Rol') !!}
                     {!! Form::select('roles', $listaRoles, null, ['class' => 'form-control', 'placeholder' => 'Seleccione un rol...']) !!}
                 </div>
-                <div class="form-group align-items-end col-sm-4 d-flex justify-content-center justify-content-sm-end mb-0 mb-sm-3">
+                <div class="form-group align-items-end col-md-4 d-flex justify-content-center justify-content-md-end mb-0 mb-sm-3 order-5">
                     {!! Form::submit('Crear usuario',['class' => 'btn bg-navy btn.sm']) !!}
                     {!! Form::close() !!}
                 </div>
@@ -36,7 +49,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('resources/css/users.css') }}">
 @stop
 
 @section('js')

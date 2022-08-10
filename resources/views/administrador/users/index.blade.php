@@ -40,7 +40,7 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-around">
-                                    <a href="{{ route('administrador.users.edit',$user) }}"
+                                    <a href="{{ route('administrador.users.edit', $user) }}"
                                        class="btn btn-success btn-sm position-relative">
                                         <i class="fas fa-edit class_title" data-title="Editar"></i>
                                     </a>
@@ -66,7 +66,6 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
 @stop
 
 @push('js')
