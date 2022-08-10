@@ -71,11 +71,15 @@ class IncapacityCreate extends Component
         }
     }
 
-    public function calcular_salario()
+    public function calcular_salario($value)
     {
-        $employees = Employee::all();
-        dd($employees->get('salary'));
-        $this->salary_per_day = 40 / 30;
+        $employees = Employee::find($value);
+        //dd($employees);
+        if($employees){
+            $this->salary_per_day = $employees->salary / 30;
+        }else{
+            $this->salary_per_day = 0.00;
+        }
     }
 
     public function store()

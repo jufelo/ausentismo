@@ -5,7 +5,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     {!! Form::label('employee_id', 'Empleado') !!}
-                    <select name="employee_id" id="employee_id" class="form-control" wire:model="employee_id" wire:change = 'calcular_salario()'>
+                    <select name="employee_id" id="employee_id" class="form-control" wire:model="employee_id" wire:change = 'calcular_salario($event.target.value)'>
                         <option>Seleccione el empleado...</option>
                         @foreach ($employees as $employee)
                             <option value="{{$employee->id}} ">{{$employee->full_name}}</option>
@@ -15,7 +15,7 @@
 
                     <div class="form-group col-md-4">
                         {!! Form::label('salary_per_day', 'Salario por Día') !!}
-                        {!! Form::text('salary_per_day', $this->salary_per_day , ['class' => 'form-control', 'readonly']) !!}
+                        {!! Form::text('salary_per_day', number_format($this->salary_per_day, 2) , ['class' => 'form-control', 'readonly']) !!}
                     </div>
 
                     <div class="form-group col-md-4">
