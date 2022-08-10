@@ -1,3 +1,21 @@
+:::qi:qw
+ii::i:aa::q:::q::::::::::::.:::::eeeeeeeee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:qw
 @extends('adminlte::page')
 
 @section('title', 'inicio')
@@ -54,9 +72,9 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('resources/css/users.css') }}">
 @stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
+:a:q:a:aaaaaa:q:
+:a:q:qq:
+@section('js')dd::..q:a:
 @stop

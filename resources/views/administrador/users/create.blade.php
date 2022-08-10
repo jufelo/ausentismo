@@ -25,21 +25,28 @@
             <div class="form-row">
                 <div class="form-group col-sm-6 col-md-4 order-1">
                     {!! Form::label('employee', 'Empleado') !!}
-                    <select name="employee" id="employee_id" class="form-control">
+                    <select name="employee" id="employee_id" class="form-control {{ $errors->has('employee') ? 'is-invalid' : null  }}">
                         <option value="">Seleccione un empleado...</option>
                         @foreach ($employees as $employee)
                             <option value="{{$employee->id}} ">{{$employee->name}} {{$employee->lastname}}</option>
                         @endforeach
                     </select>
+                    @error('employee')
+                        <span class="font-weight-bold invalid-feedback" role="alert">*{{ $message }}</span>
+                    @enderror
                 </div>
 
                 @include('administrador.users.partials.form')
 
                 <div class="form-group col-sm-5 col-md-4 order-4">
                     {!! Form::label('roles', 'Rol') !!}
-                    {!! Form::select('roles', $listaRoles, null, ['class' => 'form-control', 'placeholder' => 'Seleccione un rol...']) !!}
+                    {!! Form::select('roles', $listaRoles, null, ['class' => 'form-control ' . ($errors->has('roles') ? 'is-invalid' : null), 'placeholder' => 'Seleccione un rol...']) !!}
+                    @error('roles')
+                    <span class ="font-weight-bold invalid-feedback" role="alert">*{{ $message }}</span>
+                    @enderror
                 </div>
-                <div class="form-group align-items-end col-md-4 d-flex justify-content-center justify-content-md-end mb-0 mb-sm-3 order-5">
+                <div
+                    class="form-group align-items-end col-md-4 d-flex justify-content-center justify-content-md-end mb-0 mb-sm-3 order-5">
                     {!! Form::submit('Crear usuario',['class' => 'btn bg-navy btn.sm']) !!}
                     {!! Form::close() !!}
                 </div>
@@ -53,5 +60,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
 @stop
