@@ -27,7 +27,7 @@ class UserStoreRequest extends FormRequest
             'employee' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'role' => 'required',
+            'roles' => 'required',
         ];
     }
 
@@ -35,9 +35,10 @@ class UserStoreRequest extends FormRequest
    {
         return
         [
-            
+            'employee.required' => 'Debe seleccionar un empleado',
             'email.required' => 'Debe ingresar un correo',
-            'password.required' => 'Debe ingresar una contraseña'
+            'password.required' => 'Debe ingresar una contraseña',
+            'roles.required' => 'Debe asignar un rol'
         ];
    }
 }
