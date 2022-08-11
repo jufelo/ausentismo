@@ -18,7 +18,7 @@
 
                 <div class="form-group col-sm-4 col-xl-2">
                     {!! Form::label('salary_per_day', 'Salario por Día') !!}
-                    {!! Form::text('salary_per_day', '$'.number_format($this->salary_per_day,2) , ['class' => 'form-control', 'readonly']) !!}
+                    {!! Form::text('salary_per_day', '$'.number_format($this->salary_per_day,2) , ['class' => 'form-control font-weight-bold text-center text-success', 'readonly']) !!}
                 </div>
 
                 <div class="form-group col-sm-7 col-xl-3">
@@ -49,7 +49,7 @@
                         <span class="invalid-feedback font-weight-bold" role="alert">*{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group col-6 col-md-4">
+                <div class="form-group col-6 col-md-4 col-xl-3">
                     {!! Form::label('start_date', 'Fecha Inicio Incapacidad') !!}
                     {!! Form::date('start_date', null, ['class' => 'form-control'.($errors->has('start_date') ? ' is-invalid':null), 'wire:model' => 'start_date', 'wire:change' => 'calcular_dias()']) !!}
                     @error('start_date')
@@ -57,7 +57,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-6 col-md-4">
+                <div class="form-group col-6 col-md-4 col-xl-3">
                     {!! Form::label('end_date', 'Fecha Fin Incapacidad') !!}
                     {!! Form::date('end_date', null, ['class' => 'form-control'.($errors->has('end_date') ? ' is-invalid':null), 'wire:model' => 'end_date', 'wire:change' => 'calcular_dias()']) !!}
                     @error('end_date')
@@ -65,9 +65,9 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-sm-4">
-                    {!! Form::label('total_per_day', 'Días de Incapacidad') !!}
-                    {!! Form::text('total_per_day', $total_per_day , ['class' => 'form-control', 'readonly']) !!}
+                <div class="form-group col-5 col-sm-4 col-xl-2">
+                    {!! Form::label('total_per_day', 'Días de Incapacidad', ['class' => 'text-nowrap']) !!}
+                    {!! Form::text('total_per_day', $total_per_day , ['class' => 'form-control font-weight-bold text-center text-danger', 'readonly']) !!}
                 </div>
 
                 <div class="col-12 col-sm-8 col-md-12 d-flex align-items-end justify-content-center justify-content-sm-end justify-content-md-center">
