@@ -19,18 +19,18 @@
 @stop
 
 @section('content')
-    @if(request()->query('tipo') == 'real')
+    @if(request()->query('tipo') === 'real')
         @livewire('administrador.incapacity-create', ['employees' => $employees, 'listaIncapacidades' => $listaIncapacidades, 'cie_10s' => $cie_10s])
     @else
         <div class="card">
             <div class="card-body">
                 {!! Form::open(['route' => 'administrador.incapacities.store']) !!}
-                    @include('administrador.incapacities.partials.form')
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            {!! Form::submit('Crear Incapacidad',['class' => 'btn bg-navy my-1']) !!}
-                        </div>
+                @include('administrador.incapacities.partials.form')
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        {!! Form::submit('Crear Incapacidad',['class' => 'btn bg-navy my-3']) !!}
                     </div>
+                </div>
                 {!! Form::close() !!}
             </div>
         </div>
