@@ -18,9 +18,9 @@
                             <h5 class="card-title font-weight-bold text-center w-100">Empleados</h5>
                         </div>
                         <div class="card-body p-2">
-                            <p class="fa-4x font-weight-light m-0 text-center">{{ $users }}</p>
+                            <p class="fa-3x font-weight-light m-0 text-center">{{ $users }}</p>
                         </div>
-                        <i class="fas fa-info-circle position-absolute m-1 class_title"></i>
+                        <i class="fas fa-info-circle position-absolute m-1 class_title" data-title="Empleados activos"></i>
                     </div>
                 </div>
                 <div class="col mb-4 mb-md-0">
@@ -29,14 +29,14 @@
                             <h5 class="card-title font-weight-bold text-center w-100">Ausentismo</h5>
                         </div>
                         <div class="card-body p-2">
-                            <p class="fa-4x font-weight-light m-0 text-center">{{ $incapacities }}</p>
+                            <p class="fa-3x font-weight-light m-0 text-center">{{ $incapacities }}</p>
                         </div>
-                        <i class="fas fa-info-circle position-absolute m-1 class_title"></i>
-                        <select class="border-0 form-control form-control-sm h-auto m-1 p-0 position-absolute text-success w-auto card-select-dashboard">
+                        <i class="fas fa-info-circle position-absolute m-1 class_title" data-title="Incapacidades reportadas"></i>
+                        {{--<select class="border-0 form-control form-control-sm h-auto m-1 p-0 position-absolute text-success w-auto card-select-dashboard">
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>
                             <option value="all">Total</option>
-                        </select>
+                        </select>--}}
                     </div>
                 </div>
                 <div class="col mb-4 mb-sm-0">
@@ -45,14 +45,14 @@
                             <h5 class="card-title font-weight-bold text-center w-100">Dx común</h5>
                         </div>
                         <div class="card-body p-2 text-white">
-                            <p class="fa-4x font-weight-light m-0 text-center">U072</p>
+                            <p class="fa-3x font-weight-light m-0 text-center">{{ $code_dx[0]->code }}</p>
                         </div>
-                        <i class="fas fa-info-circle position-absolute m-1 text-white class_title" data-title="COVID-19 (VIRUS NO IDENTIFICADOS)"></i>
-                        <select class="border-0 form-control form-control-sm h-auto m-1 p-0 position-absolute text-warning w-auto card-select-dashboard">
+                        <i class="fas fa-info-circle position-absolute m-1 text-white class_title" data-title="{{ $code_dx[0]->name }}"></i>
+                        {{--<select class="border-0 form-control form-control-sm h-auto m-1 p-0 position-absolute text-warning w-auto card-select-dashboard">
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>
                             <option value="all">Total</option>
-                        </select>
+                        </select>--}}
                     </div>
                 </div>
                 <div class="col mb-md-0">
@@ -61,14 +61,14 @@
                             <h5 class="card-title font-weight-bold text-center w-100">Pagado($)</h5>
                         </div>
                         <div class="card-body p-2">
-                            <p class="fa-4x font-weight-light m-0 text-center">90 M</p>
+                            <p class="fa-3x font-weight-light m-0 text-center">{{ $paid_company }}</p>
                         </div>
                         <i class="fas fa-info-circle position-absolute m-1 class_title" data-title="K - Miles / M - Millones"></i>
-                        <select class="border-0 form-control form-control-sm h-auto m-1 p-0 position-absolute text-danger w-auto card-select-dashboard">
+                        {{--<select class="border-0 form-control form-control-sm h-auto m-1 p-0 position-absolute text-danger w-auto card-select-dashboard">
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>
                             <option value="all">Total</option>
-                        </select>
+                        </select>--}}
                     </div>
                 </div>
             </div>

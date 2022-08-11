@@ -17,7 +17,7 @@ class IncapacityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function index()
     {
@@ -26,8 +26,8 @@ class IncapacityController extends Controller
         $incapacity_types = Incapacity_type::all();
         $cie_10s = Cie_10::all();
         //$employees = Employee::with('incapacity')->get();
-        //dd($incapacities);
-        
+//        dd($incapacities);
+
         return view('administrador.incapacities.index', compact('employees', 'incapacities','incapacity_types', 'cie_10s'));
     }
 
@@ -66,9 +66,9 @@ class IncapacityController extends Controller
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
                 'clasification' => $request->clasification,
-                
+
             ]);
-            
+
             Alert::toast('registro incapacidad guardado exitosamente', 'success');
             return redirect()->route('administrador.incapacities.index');
 
@@ -126,14 +126,14 @@ class IncapacityController extends Controller
                 //dd($employee);
                 Alert::toast('Registro actualizado exitosamente','success');
                 return redirect()->route('administrador.incapacities.index');
-    
+
             }catch(Exception $e)
             {
                 Alert::toast('Error en la actualización','error');
                 return redirect()->route('administrador.incapacities.index');
             }
         }
-    
+
     }
 
     /**
@@ -149,11 +149,11 @@ class IncapacityController extends Controller
             $incapacity->delete();
             Alert::toast('Registro de incapacidad eliminado exitosamente','success');
             return redirect()->route('administrador.incapacities.index');
-        }    
+        }
         catch(Exception $e)
         {
             Alert::toast('Error en la eliminación del registro de incapacidad','error');
             return redirect()->route('administrador.incapacities.index');
-        }    
+        }
     }
 }

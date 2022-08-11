@@ -32,23 +32,24 @@ class IncapacityCreate extends Component
 
     protected $rules =
     [
+        'employee_id' => 'required',
         'start_date' => 'required',
         'end_date' => 'required',
-        //'incapacity_type' => 'required',
+        'incapacity_type_id' => 'required',
         'clasification' => 'required',
-        //'employee_id' => 'required',
-
+        'cie_10_id' => 'required',
     ];
 
     protected $messages = [
-
+        'employee_id.required' => 'El empleado es requerido',
+        'incapacity_type_id.required' => 'El tipo es requerido',
         'start_date.required' => 'La fecha inicial es requerida',
         'end_date.required' => 'La fecha final es requerida',
         'name.required' => 'El nombre es requerido.',
         'lastname.required' => 'El apellido es requerido.',
         'clasification.required' => 'La clasificación es requerida.',
         'salary.required' => 'El salario es requerido.',
-
+        'cie_10_id.required' => 'El diagnóstico es requerido.',
     ];
 
     public function updatedName()

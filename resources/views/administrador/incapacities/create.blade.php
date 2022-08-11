@@ -26,7 +26,7 @@
             <div class="card-body">
                 {!! Form::open(['route' => 'administrador.incapacities.store']) !!}
                     @include('administrador.incapacities.partials.form')
-                    <div class="col-12">
+                    <div class="col-12 my-3">
                         <div class="d-flex justify-content-center">
                             {!! Form::submit('Crear Incapacidad',['class' => 'btn bg-navy my-1']) !!}
                         </div>

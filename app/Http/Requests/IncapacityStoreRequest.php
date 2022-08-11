@@ -24,6 +24,7 @@ class IncapacityStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'incapacity_type_id' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
             'clasification' => 'required',
@@ -33,9 +34,10 @@ class IncapacityStoreRequest extends FormRequest
    {
         return
         [
-            'start_date.required' => 'Debe ingresar la fecha inicial de la incapacidad',
-            'end_date.required' => 'Debe ingresar la fecha de finalización de la incapacidad',
-            'clasification.required' => 'Debe ingresar el tipo de clasificación',
+            'incapacity_type_id.required' => 'Seleccione el tipo de incapacidad',
+            'start_date.required' => 'Ingrese la fecha inicial',
+            'end_date.required' => 'Ingrese la fecha final',
+            'clasification.required' => 'Seleccione la clasificación',
         ];
-   } 
+   }
 }
