@@ -28,7 +28,7 @@
                     <select name="employee" id="employee_id" class="form-control {{ $errors->has('employee') ? 'is-invalid' : null  }}">
                         <option value="">Seleccione un empleado...</option>
                         @foreach ($employees as $employee)
-                            <option value="{{$employee->id}} ">{{$employee->name}} {{$employee->lastname}}</option>
+                            <option value="{{$employee->id}}">{{$employee->name}} {{$employee->lastname}}</option>
                         @endforeach
                     </select>
                     @error('employee')
@@ -47,7 +47,7 @@
                 </div>
                 <div
                     class="form-group align-items-end col-md-4 d-flex justify-content-center justify-content-md-end mb-0 mb-sm-3 order-5">
-                    {!! Form::submit('Crear usuario',['class' => 'btn bg-navy btn.sm']) !!}
+                    {!! Form::submit('Crear usuario', ['class' => 'btn bg-navy btn.sm']) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -56,7 +56,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('resources/css/users.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/css/styles.css') }}">
 @stop
 
 @section('js')

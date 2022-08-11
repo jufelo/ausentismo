@@ -49,13 +49,13 @@
                             </span>
                         @enderror
                     </div>
-                
+
                     <div class="form-group col-md-4">
                         {!! Form::label('total_per_day', 'Total Días de Incapacidad') !!}
                         {!! Form::text('total_per_day', $total_per_day , ['class' => 'form-control', 'readonly']) !!}
                     </div>
 
-                
+
                     <div class="form-group col-md-4">
                         {!! Form::label('clasification', 'Clasificación') !!}
                         {!! Form::select('clasification', ['Inicial' => 'Inicial', 'Prorroga' => 'Prorroga'], null, ['class' => 'form-control'.($errors->has('clasification') ? ' is-invalid':''), 'placeholder' => 'Seleccione el tipo de clasificación...', 'wire:model' => 'clasification']) !!}

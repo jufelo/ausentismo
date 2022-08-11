@@ -1,21 +1,3 @@
-:::qi:qw
-ii::i:aa::q:::q::::::::::::.:::::eeeeeeeee
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:qw
 @extends('adminlte::page')
 
 @section('title', 'inicio')
@@ -72,9 +54,7 @@ ii::i:aa::q:::q::::::::::::.:::::eeeeeeeee
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('resources/css/users.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/css/styles.css') }}">
 @stop
-:a:q:a:aaaaaa:q:
-:a:q:qq:
-@section('js')dd::..q:a:
+@section('js')
 @stop

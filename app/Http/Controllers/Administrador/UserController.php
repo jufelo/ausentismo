@@ -85,7 +85,7 @@ class UserController extends Controller
         $userRoles = $user->getRoleNames()->all();
         $employees = Employee::all();
         $listaRoles = Role::all();
-        return view('administrador.users.edit',compact('user','listaRoles','employees', 'userRoles'));
+        return view('administrador.users.edit',compact('user','listaRoles', 'employees', 'userRoles'));
     }
 
     /**
@@ -148,6 +148,5 @@ class UserController extends Controller
             Alert::toast('Error en la eliminación de usuario','error');
             return redirect()->route('administrador.users.index');
         }
-
     }
 }

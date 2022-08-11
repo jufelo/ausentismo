@@ -9,7 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class IncapacityCreate extends Component
 {
-    
+
     public $name;
     public $lastname;
     public $incapacity_types;
@@ -30,18 +30,18 @@ class IncapacityCreate extends Component
     public $cie_10;
     public $cie_10_id;
 
-    protected $rules = 
-    [   
+    protected $rules =
+    [
         'start_date' => 'required',
         'end_date' => 'required',
         //'incapacity_type' => 'required',
         'clasification' => 'required',
         //'employee_id' => 'required',
-        
+
     ];
 
     protected $messages = [
-        
+
         'start_date.required' => 'La fecha inicial es requerida',
         'end_date.required' => 'La fecha final es requerida',
         'name.required' => 'El nombre es requerido.',
@@ -74,7 +74,6 @@ class IncapacityCreate extends Component
     public function calcular_salario()
     {
         $employees = Employee::all();
-        dd($employees->get('salary'));
         $this->salary_per_day = 40 / 30;
     }
 
@@ -84,14 +83,14 @@ class IncapacityCreate extends Component
         $this->validate($this->rules);
 
         Incapacity::create([
-            
+
             'incapacity_type_id' => $this->incapacity_type_id,
             'employee_id' => $this->employee_id,
             'cie_10_id' => $this->cie_10_id,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'clasification' => $this->clasification,
-            
+
 
         ]);
 

@@ -22,8 +22,8 @@ td, th {
     background: rgb(0 31 63 / 70%);
     border-radius: 5px;
     position: absolute;
-    bottom: 0;
-    right: 29px;
+    bottom: 13px;
+    right: 25px;
     z-index: 1;
     font-weight: normal;
     white-space: nowrap;

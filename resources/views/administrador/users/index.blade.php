@@ -34,7 +34,7 @@
                             <td>{{ $user->email }}</td>
                             <td class="text-nowrap">
                                 @foreach ($user->roles as $role)
-                                    <span class="badge badge-{{$role->name === 'Administrador' ? 'danger' : 'info'}}">{{ $role->name }}</span>
+                                    <span class="badge badge-{{ $role->name === 'Administrador' ? 'danger' : 'info'}}">{{ $role->name }}</span>
                                 @endforeach
                             </td>
                             <td>
@@ -61,7 +61,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('resources/css/users.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/css/styles.css') }}">
 @stop
 
 @section('js')
@@ -73,9 +73,9 @@
             let printCounter = 0;
             $('#users').DataTable({
                 'dom': 'B<"float-left"l><"float-right"f>rt<"float-left"i><"d-flex justify-content-end"p><"clearfix">',
-                responsive: true,
-                autoWidth: false,
-                //order: [[1, 'asc']],
+                'responsive': true,
+                'autoWidth': false,
+                'order': [[0, 'asc']],
                 'rowId': function (data) {
                     return 'tr_' + data.id;
                 },
