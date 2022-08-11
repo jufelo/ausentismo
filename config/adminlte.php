@@ -290,6 +290,7 @@ return [
         [
             'text'    => 'Reportes',
             'icon'    => 'fas fa-fw fa-file',
+            'classes' => 'd-none',
             'submenu' => [
                 [
                     'text' => 'Area de trabajo',
