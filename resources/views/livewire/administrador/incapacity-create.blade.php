@@ -15,7 +15,7 @@
 
                     <div class="form-group col-md-4">
                         {!! Form::label('salary_per_day', 'Salario por Día') !!}
-                        {!! Form::text('salary_per_day', number_format($this->salary_per_day, 2) , ['class' => 'form-control', 'readonly']) !!}
+                        {!! Form::text('salary_per_day', '$'.number_format($this->salary_per_day, 2) , ['class' => 'form-control', 'readonly']) !!}
                     </div>
 
                     <div class="form-group col-md-4">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group col md-4">
                         {!! Form::label('start_date', 'Fecha Inicio Incapacidad') !!}
-                        {!! Form::date('start_date', null, ['class' => 'form-control'.($errors->has('start_date') ? ' is-invalid':null), 'wire:model' => 'start_date', 'wire:keyup' => 'calcular_dias()']) !!}
+                        {!! Form::date('start_date', null, ['class' => 'form-control'.($errors->has('start_date') ? ' is-invalid':null), 'wire:model' => 'start_date', 'wire:change' => 'calcular_dias()']) !!}
                         @error('start_date')
                             <span class="invalid-feedback" role="alert">
                                 <strong>*{{ $message }}</strong>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         {!! Form::label('end_date', 'Fecha Finalización Incapacidad') !!}
-                        {!! Form::date('end_date', null, ['class' => 'form-control'.($errors->has('end_date') ? ' is-invalid':null), 'wire:model' => 'end_date', 'wire:keyup' => 'calcular_dias()']) !!}
+                        {!! Form::date('end_date', null, ['class' => 'form-control'.($errors->has('end_date') ? ' is-invalid':null), 'wire:model' => 'end_date', 'wire:change' => 'calcular_dias()']) !!}
                         @error('end_date')
                             <span class="invalid-feedback" role="alert">
                                 <strong>*{{ $message }}</strong>
