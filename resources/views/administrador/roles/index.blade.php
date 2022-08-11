@@ -77,7 +77,7 @@
                         'buttons': [
                             {
                                 'extend': 'excelHtml5',
-                                'title': 'Usuarios',
+                                'title': 'Roles',
                                 'text': '<i class="fas fa-lg fa-file-excel"></i>',
                                 'autoFilter': true,
                                 'sheetName': 'Usuarios',
@@ -89,7 +89,7 @@
                             },
                             {
                                 'extend': 'pdfHtml5',
-                                'title': 'Usuarios',
+                                'title': 'Roles',
                                 'text': '<i class="fas fa-lg fa-file-pdf"></i>',
                                 'titleAttr': 'Exportar a PDF',
                                 'orientation': 'portrait',
@@ -102,7 +102,7 @@
                             },
                             {
                                 'extend': 'copyHtml5',
-                                'title': 'Usuarios',
+                                'title': 'Roles',
                                 'text': '<i class="fas fa-lg fa-copy"></i>',
                                 'titleAttr': 'Copiar',
                                 'className': 'bg-primary rounded w-auto',
@@ -112,7 +112,7 @@
                             },
                             {
                                 'extend': 'print',
-                                'title': 'Usuarios',
+                                'title': 'Roles',
                                 'text': '<i class="fas fa-lg fa-print"></i>',
                                 'titleAttr': 'Imprimir',
                                 'className': 'bg-secondary rounded w-auto',
@@ -138,7 +138,7 @@
                             },
                             {
                                 'extend': 'csvHtml5',
-                                'title': 'Usuarios',
+                                'title': 'Roles',
                                 'text': '<i class="fas fa-lg fa-file-csv"></i>',
                                 'titleAttr': 'Exportar a CSV',
                                 'className': 'bg-success rounded w-auto',
