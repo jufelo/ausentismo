@@ -23,7 +23,11 @@
         <div class="card-body">
             {!! Form::model($incapacity, ['route' => ['administrador.incapacities.update', $incapacity], 'method' => 'put']) !!}
                 @include('administrador.incapacities.partials.form')
-                {!! Form::submit('Actualizar incapacidad',['class' => 'btn btn-primary btn-sm']) !!}
+            <div class="col-12 my-3">
+                <div class="d-flex justify-content-center">
+                    {!! Form::submit('Actualizar incapacidad',['class' => 'btn bg-navy']) !!}
+                </div>
+            </div>
             {!! Form::close() !!}
         </div>
     </div>

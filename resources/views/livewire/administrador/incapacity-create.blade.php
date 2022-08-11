@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body">
             <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-sm-8 col-xl-7">
                     {!! Form::label('employee_id', 'Empleado') !!}
                     <select name="employee_id" id="employee_id" class="form-control {{ $errors->has('employee_id') ? 'is-invalid':'' }}" wire:model="employee_id" wire:change='calcular_salario( $event.target.value )'>
                         <option>Seleccione el empleado...</option>
@@ -16,12 +16,12 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-4 col-xl-2">
                     {!! Form::label('salary_per_day', 'Salario por Día') !!}
                     {!! Form::text('salary_per_day', '$'.number_format($this->salary_per_day,2) , ['class' => 'form-control', 'readonly']) !!}
                 </div>
 
-                <div class="form-group col-sm-7">
+                <div class="form-group col-sm-7 col-xl-3">
                     {!! Form::label('incapacity_type_id', 'Tipo de Incapacidad') !!}
                     {!! Form::select('incapacity_type_id', $listaIncapacidades, null, ['class' => 'form-control' . ($errors->has('incapacity_type_id') ? ' is-invalid':''), 'placeholder' => 'Seleccione el tipo de incapacidad...', 'wire:model' => 'incapacity_type_id']) !!}
                     @error('incapacity_type_id')
@@ -29,7 +29,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-sm-5">
+                <div class="form-group col-sm-5 col-xl-3">
                     {!! Form::label('clasification', 'Clasificación') !!}
                     {!! Form::select('clasification', ['Inicial' => 'Inicial', 'Prorroga' => 'Prorroga'], null, ['class' => 'form-control'.($errors->has('clasification') ? ' is-invalid':''), 'placeholder' => 'Seleccione la clasificación...', 'wire:model' => 'clasification']) !!}
                     @error('clasification')
@@ -37,7 +37,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-md-12">
+                <div class="form-group col-xl-9">
                     {!! Form::label('cie_10_id', 'Código CIE10') !!}
                     <select name="cie_10_id" id="cie_10_id" class="form-control {{ $errors->has('cie_10_id') ? 'is-invalid':'' }}" wire:model='cie_10_id'>
                         <option>Seleccione el código...</option>
