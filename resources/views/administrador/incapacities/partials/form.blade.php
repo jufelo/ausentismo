@@ -1,6 +1,6 @@
 <div class="form-row">
     @if (!empty($incapacity))
-        <div class="form-group col-md-6 col-xl-4">
+        <div class="form-group col-md-6 col-xl-5">
             {!! Form::label('employee', 'Empleado') !!}
             {!! Form::text('employee', $employee->full_name , ['class' => 'form-control', 'readonly']) !!}
         </div>
