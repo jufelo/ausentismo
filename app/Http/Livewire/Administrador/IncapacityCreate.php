@@ -65,12 +65,11 @@ class IncapacityCreate extends Component
 
     public function calcular_dias()
     {
-        if($this->end_date >= $this->start_date){
-
+        if(strtotime($this->end_date) >= strtotime($this->start_date) && strtotime($this->start_date) != null && strtotime($this->end_date) != null && strtotime($this->start_date) >= 946684800){
             $this->total_per_day = ((strtotime($this->end_date) - strtotime($this->start_date)) / 86400);
 
         }else{
-            $this->total_per_day = 'Fecha Incorrecta';
+            $this->total_per_day = '';
         }
     }
 
