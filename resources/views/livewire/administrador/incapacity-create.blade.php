@@ -3,9 +3,9 @@
     <div class="card">
         <div class="card-body">
             <div class="form-row">
-                <div class="form-group col-sm-8">
+                <div class="form-group col-md-4">
                     {!! Form::label('employee_id', 'Empleado') !!}
-                    <select name="employee_id" id="employee_id" class="form-control {{ $errors->has('employee_id') ? 'is-invalid':'' }}" wire:model="employee_id" wire:change='calcular_salario()'>
+                    <select name="employee_id" id="employee_id" class="form-control {{ $errors->has('employee_id') ? 'is-invalid':'' }}" wire:model="employee_id" wire:change='calcular_salario( $event.target.value )'>
                         <option>Seleccione el empleado...</option>
                         @foreach ($employees as $employee)
                             <option value="{{$employee->id}} ">{{$employee->full_name}}</option>
@@ -18,7 +18,7 @@
 
                 <div class="form-group col-sm-4">
                     {!! Form::label('salary_per_day', 'Salario por Día') !!}
-                    {!! Form::text('salary_per_day', $this->salary_per_day , ['class' => 'form-control', 'readonly']) !!}
+                    {!! Form::text('salary_per_day', '$'.number_format($this->salary_per_day,2) , ['class' => 'form-control', 'readonly']) !!}
                 </div>
 
                 <div class="form-group col-sm-7">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group col-6 col-md-4">
                     {!! Form::label('start_date', 'Fecha Inicio Incapacidad') !!}
-                    {!! Form::date('start_date', null, ['class' => 'form-control'.($errors->has('start_date') ? ' is-invalid':null), 'wire:model' => 'start_date', 'wire:keyup' => 'calcular_dias()']) !!}
+                    {!! Form::date('start_date', null, ['class' => 'form-control'.($errors->has('start_date') ? ' is-invalid':null), 'wire:model' => 'start_date', 'wire:change' => 'calcular_dias()']) !!}
                     @error('start_date')
                         <span class="invalid-feedback font-weight-bold" role="alert">*{{ $message }}</span>
                     @enderror

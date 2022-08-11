@@ -65,17 +65,24 @@ class IncapacityCreate extends Component
 
     public function calcular_dias()
     {
-        if($this->end_date > $this->start_date){
+        if($this->end_date >= $this->start_date){
 
-            $this->total_per_day = ((strtotime($this->end_date) - strtotime($this->start_date)) / 60 / 60 / 24);
+            $this->total_per_day = ((strtotime($this->end_date) - strtotime($this->start_date)) / 86400);
 
+        }else{
+            $this->total_per_day = 'Fecha Incorrecta';
         }
     }
 
-    public function calcular_salario()
+    public function calcular_salario($value)
     {
-        $employees = Employee::all();
-        $this->salary_per_day = 40 / 30;
+        $employees = Employee::find($value);
+        if($employees){
+            $this->salary_per_day = $employees->salary / 30;
+        }else{
+            $this->salary_per_day = 0.00;
+        }
+        
     }
 
     public function store()
