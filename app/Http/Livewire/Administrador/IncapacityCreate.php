@@ -30,6 +30,11 @@ class IncapacityCreate extends Component
     public $cie_10;
     public $cie_10_id;
 
+    public $paid_company;
+    public $paid_eps;
+    public $paid_arl;
+    public $paid_afp;
+
     protected $rules =
     [
         'employee_id' => 'required',
@@ -58,7 +63,7 @@ class IncapacityCreate extends Component
             'incapacity_type' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'clasification' => 'required'
+            'clasification' => 'required',
 
           ]);
     }
@@ -83,6 +88,107 @@ class IncapacityCreate extends Component
         }
         
     }
+    
+    public function calcular_pago(){
+        $this->paid_company = 0.00;
+        $this->paid_eps = 0.00;
+        $this->paid_arl = 0.00;
+        $this->paid_afp = 0.00;
+        $this->salario_minimo_diario = 33334;
+
+        // 1-Enfermedad común 100% pagado por Empleador del día 1 al 2
+        if($this->incapacity_type_id == 1){
+            if($this->total_per_day >= 1 && $this->total_per_day <= 2){
+
+                $this->paid_company = $this->total_per_day * $this->salary_per_day;
+            }
+        
+
+            // 1-Enfermedad común 66.67% pagado por EPS del día 3 al 180
+            elseif($this->total_per_day >= 3 && $this->total_per_day <= 180){
+
+                //Cuando el trabajador devenga un salario mínimo las incapacidades no se pueden pagar por un valor menor
+                if($this->salary_per_day > $this->salario_minimo_diario){
+                    $this->paid_company = 2 * $this->salary_per_day;
+                    $this->paid_eps = ($this->total_per_day-2) * $this->salary_per_day * 0.667; // porcentaje en requerimiento
+                    
+                }else{
+                    $this->paid_company = 2 * $this->salary_per_day;
+                    $this->paid_eps = ($this->total_per_day-2) * $this->salary_per_day; 
+
+                }
+            }
+
+            // 1-Enfermedad común 50% pagado por AFP del día 181 al 540
+            elseif($this->total_per_day >= 181 && $this->total_per_day <= 540){
+                if($this->salary_per_day > $this->salario_minimo_diario){
+                    $this->paid_company = 2 * $this->salary_per_day;
+                    $this->paid_eps = 180 * $this->salary_per_day * 0.667; // porcentaje en requerimiento
+                    $this->paid_afp = ($this->total_per_day-180) * $this->salary_per_day * 0.5;
+                    }else{
+                        $this->paid_company = 2 * $this->salary_per_day;
+                        $this->paid_eps = 180 * $this->salary_per_day;
+                        $this->paid_afp = ($this->total_per_day-180) * $this->salary_per_day;
+
+                    }
+            }
+
+            // 1-Enfermedad común 50% pagado por EPS del día 541 en adelante (según la perdida de capacidad laboral asumido por la EPS)
+            elseif($this->total_per_day >= 541){
+                if($this->salary_per_day > $this->salario_minimo_diario){
+                    $this->paid_company = 2 * $this->salary_per_day;
+                    $this->paid_afp = 540 * $this->salary_per_day * 0.5;
+                    $this->paid_eps = 180 * $this->salary_per_day * 0.667 + ($this->total_per_day-540) * $this->salary_per_day * 0.5; // porcentaje en requerimiento
+                }else{
+                    $this->paid_eps = $this->total_per_day * $this->salary_per_day;
+                    $this->paid_afp = 540 * $this->salary_per_day;
+                    $this->paid_eps = 180 * $this->salary_per_day + ($this->total_per_day-540) * $this->salary_per_day; // porcentaje en requerimiento
+                }
+            }    
+        }
+
+        // 2-Licencia de maternidad 100% pagado por EPS 120 días
+        elseif($this->incapacity_type_id == 2){
+            $this->paid_eps = 120 * $this->salary_per_day;
+        }
+
+        //3-Licencia de paternidad 100% pagado por EPS 14 días
+        elseif($this->incapacity_type_id == 3){
+            $this->paid_eps = 14 * $this->salary_per_day;
+        }
+        
+        //dd($this->salary_per_day);
+        // 4-Accidente de trabajo o 5-enfermedad laboral 100% pagado por ARL
+        elseif($this->incapacity_type_id == 4 || $this->incapacity_type_id == 5){
+
+            $this->paid_arl = $this->total_per_day * $this->salary_per_day;
+        }
+        
+        // 7-Accidente de tránsito 100% pagado por Empleador del día 1 al 2
+        elseif($this->incapacity_type_id == 7){
+            if($this->total_per_day >= 1 && $this->total_per_day <= 2){
+
+                $this->paid_company = $this->total_per_day * $this->salary_per_day;
+            }
+
+            // 7-Accidente de tránsito 67% pagado  por EPS del día 3 al 180 días (de acuerdo al tipo de incapacidad asumido)
+            elseif($this->total_per_day >= 3 && $this->total_per_day <= 180){
+                if($this->salary_per_day > $this->salario_minimo_diario){
+                    $this->paid_company = 2 * $this->salary_per_day; //porcentaje en requerimiento
+                    $this->paid_eps = ($this->total_per_day -2) * $this->salary_per_day * 0.67; 
+                }else{
+                    $this->paid_company = 2 * $this->salary_per_day; //porcentaje en requerimiento
+                    $this->paid_eps = ($this->total_per_day -2) * $this->salary_per_day; 
+
+                }
+                
+            }
+        }
+        
+
+        
+
+    }
 
     public function store()
     {
@@ -97,6 +203,11 @@ class IncapacityCreate extends Component
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'clasification' => $this->clasification,
+            'paid_company' => $this->paid_company,
+            'paid_eps' => $this->paid_eps,
+            'paid_arl' => $this->paid_arl,
+            'paid_afp' => $this->paid_afp,
+
 
 
         ]);
