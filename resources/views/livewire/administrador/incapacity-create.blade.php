@@ -23,7 +23,7 @@
 
                 <div class="form-group col-sm-7 col-xl-3">
                     {!! Form::label('incapacity_type_id', 'Tipo de Incapacidad') !!}
-                    {!! Form::select('incapacity_type_id', $listaIncapacidades, null, ['class' => 'form-control' . ($errors->has('incapacity_type_id') ? ' is-invalid':''), 'placeholder' => 'Seleccione el tipo de incapacidad...', 'wire:model' => 'incapacity_type_id']) !!}
+                    {!! Form::select('incapacity_type_id', $listaIncapacidades, null, ['class' => 'form-control' . ($errors->has('incapacity_type_id') ? ' is-invalid':''), 'placeholder' => 'Seleccione el tipo de incapacidad...', 'wire:model' => 'incapacity_type_id', 'wire:change' => 'calcular_pago()']) !!}
                     @error('incapacity_type_id')
                         <span class="invalid-feedback font-weight-bold" role="alert">*{{ $message }}</span>
                     @enderror
@@ -72,6 +72,25 @@
 
                 <div class="col-12 col-sm-8 col-md-12 d-flex align-items-end justify-content-center justify-content-sm-end justify-content-md-center">
                     <a class="btn bg-navy my-3" wire:click="store()">Crear incapacidad</a>
+                </div>
+                <div class="form-group col-5 col-sm-4 col-xl-2">
+                    {!! Form::label('paid_company', 'Pago Empresa', ['class' => 'text-nowrap']) !!}
+                    {!! Form::text('paid_company', '$'.number_format($this->paid_company,2) , ['class' => 'form-control font-weight-bold text-center text-danger', 'readonly']) !!}
+                </div>
+                <div class="form-group col-5 col-sm-4 col-xl-2">
+                    {!! Form::label('paid_eps', 'Pago EPS', ['class' => 'text-nowrap']) !!}
+                    {!! Form::text('paid_eps', '$'.number_format($this->paid_eps,2), ['class' => 'form-control font-weight-bold text-center text-danger', 'readonly']) !!}
+                </div>
+                <div class="form-group col-5 col-sm-4 col-xl-2">
+                    {!! Form::label('paid_arl', 'Pago ARL', ['class' => 'text-nowrap']) !!}
+                    {!! Form::text('paid_arl', '$'.number_format($this->paid_arl,2) , ['class' => 'form-control font-weight-bold text-center text-danger', 'readonly']) !!}
+                </div>
+                <div class="form-group col-5 col-sm-4 col-xl-2">
+                    {!! Form::label('paid_afp', 'Pago AFP', ['class' => 'text-nowrap']) !!}
+                    {!! Form::text('paid_afp', '$'.number_format($this->paid_afp,2) , ['class' => 'form-control font-weight-bold text-center text-danger', 'readonly']) !!}
+                </div>
+                <div class="col-12 col-sm-8 col-md-12 d-flex align-items-end justify-content-center justify-content-sm-end justify-content-md-center">
+                    <a class="btn bg-navy my-3" wire:click="calcular_pago()">Preview</a>
                 </div>
             </div>
 

@@ -57,7 +57,6 @@ class Incapacity extends Model
     
         // 1-Enfermedad común 66.67% pagado por EPS del día 3 al 180
         // 1-Enfermedad común 50% pagado por EPS del día 541 en adelante (según la perdida de capacidad laboral asumido por la EPS)
-
         if($this->incapacity_type_id == 1){
             if($this->total_dias >= 3 && $this->total_dias <= 180){
 
@@ -80,14 +79,13 @@ class Incapacity extends Model
         }
 
         // 2-Licencia de maternidad 100% pagado por EPS 120 días
-
         if($this->incapacity_type_id == 2){
-            return '$'.number_format((120) * $this->employee->salary / 30, 2);
+            return '$'.number_format(120 * $this->employee->salary / 30, 2);
         }
 
             //3-Licencia de paternidad 100% pagado por EPS 14 días
         if($this->incapacity_type_id == 3){
-            return '$'.number_format((14) * $this->employee->salary / 30, 2);
+            return '$'.number_format(14 * $this->employee->salary / 30, 2);
         }
 
         // 7-Accidente de tránsito 67% pagado  por EPS del día 3 al 180 días (de acuerdo al tipo de incapacidad asumido)
@@ -119,8 +117,7 @@ class Incapacity extends Model
 
     public function getPagoAfpAttribute()
     {
-        // 1-Enfermedad común 50% pagado por AFP del día 181 al 541
-
+        // 1-Enfermedad común 50% pagado por AFP del día 181 al 540
         if($this->incapacity_type_id == 1){
             if($this->total_dias >= 181 && $this->total_dias <= 540){
                 if($this->employee->salary > $this->salario_minimo){
