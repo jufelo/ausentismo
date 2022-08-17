@@ -17,6 +17,10 @@ class Incapacity extends Model
         'start_date',
         'end_date',
         'clasification',
+        'paid_company',
+        'paid_eps',
+        'paid_arl',
+        'paid_afp',
 
     ];   
 

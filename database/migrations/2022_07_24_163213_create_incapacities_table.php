@@ -21,10 +21,10 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('clasification');
-            $table->decimal('paid_company')->default(0.00);
-            $table->decimal('paid_eps')->default(0.00);
-            $table->decimal('paid_arl')->default(0.00);
-            $table->decimal('paid_afp')->default(0.00);
+            $table->decimal('paid_company',14,2)->default(0.00);
+            $table->decimal('paid_eps',14,2)->default(0.00);
+            $table->decimal('paid_arl',14,2)->default(0.00);
+            $table->decimal('paid_afp',14,2)->default(0.00);
             
             $table->foreign('cie_10_id')->references('id')->on('cie_10s')->onDelete('cascade');
             $table->foreign('incapacity_type_id')->references('id')->on('incapacity_types')->onDelete('cascade');
