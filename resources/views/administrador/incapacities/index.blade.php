@@ -28,7 +28,7 @@
                         <th>Tipo documento</th>
                         <th>Documento</th>
                         <th>Cargo</th>
-                        <th>Eps</th>
+                        <th>EPS</th>
                         <th>Salario</th>
                         <th>Salario día</th>
                         <th>Tipo incapacidad</th>
@@ -37,6 +37,7 @@
                         <th>Fin</th>
                         <th>Días</th>
                         <th>Clasificación</th>
+                        <th>Pago total</th>
                         <th>Pago empresa</th>
                         <th>Pago EPS</th>
                         <th>Pago ARL</th>
@@ -60,10 +61,11 @@
                             <td>{{$incapacity->end_date}}</td>
                             <td>{{$incapacity->total_dias}}</td>
                             <td>{{$incapacity->clasification}}</td>
-                            <td>{{$incapacity->paid_company}}</td>
-                            <td>{{$incapacity->paid_eps}}</td>
-                            <td>{{$incapacity->paid_arl}}</td>
-                            <td>{{$incapacity->paid_afp}}</td>
+                            <td>{{$incapacity->pago_total}}</td>
+                            <td>${{$incapacity->paid_company}}</td>
+                            <td>${{$incapacity->paid_eps}}</td>
+                            <td>${{$incapacity->paid_arl}}</td>
+                            <td>${{$incapacity->paid_afp}}</td>
                             <td>
                                 <div class="d-flex justify-content-around">
                                     <a href="{{ route('administrador.incapacities.edit', $incapacity) }}"

@@ -30,11 +30,12 @@ class IncapacityCreate extends Component
     public $cie_10;
     public $cie_10_id;
 
-    public $salario_minimo_diario = 33333.33;
+    public $salario_minimo_diario = 1000000/30;
     public $paid_company;
     public $paid_eps;
     public $paid_arl;
     public $paid_afp;
+    public $paid_total;
 
     protected $rules =
     [
@@ -96,7 +97,6 @@ class IncapacityCreate extends Component
         $this->paid_eps = 0.00;
         $this->paid_arl = 0.00;
         $this->paid_afp = 0.00;
-        
 
         // 1-Enfermedad común 100% pagado por Empleador del día 1 al 2
         if($this->incapacity_type_id == 1){
@@ -183,12 +183,10 @@ class IncapacityCreate extends Component
                     $this->paid_eps = ($this->total_per_day -2) * $this->salary_per_day; 
 
                 }
-                
             }
         }
-        
 
-        
+        $this->paid_total = $this->paid_company + $this->paid_eps + $this->paid_arl + $this->paid_afp;
 
     }
 

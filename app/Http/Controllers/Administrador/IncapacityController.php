@@ -39,7 +39,6 @@ class IncapacityController extends Controller
     public function create()
     {
         $employees = Employee::all();
-        $incapacities = Incapacity::all();
         $listaIncapacidades = Incapacity_type::pluck('name','id');
         $cie_10s = Cie_10::all();
         //dd($cie_10s);
