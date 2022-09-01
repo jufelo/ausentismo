@@ -23,6 +23,7 @@ class IncapacityCreate extends Component
     public $Employees;
     public $employees;
     public $employee;
+    
     public $listaIncapacidades;
     public $employee_id;
     public $incapacity_type_id;
@@ -36,6 +37,8 @@ class IncapacityCreate extends Component
     public $paid_arl;
     public $paid_afp;
     public $paid_total;
+
+    protected $listeners = ['refresh' => 'calcular_pago'];
 
     protected $rules =
     [
@@ -79,6 +82,8 @@ class IncapacityCreate extends Component
         }else{
             $this->total_per_day = '';
         }
+
+    $this->emit("refresh");
     }
 
     public function calcular_salario($value)
@@ -90,6 +95,7 @@ class IncapacityCreate extends Component
             $this->salary_per_day = 0.00;
         }
         
+    $this->emit('refresh');    
     }
     
     public function calcular_pago(){
@@ -215,6 +221,7 @@ class IncapacityCreate extends Component
         Alert::toast('Registro de incapacidad guardado correctamente','success');
         return redirect()->route('administrador.incapacities.index');
     }
+    
     public function render()
     {
         return view('livewire.administrador.incapacity-create');

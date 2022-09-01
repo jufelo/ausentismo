@@ -93,15 +93,7 @@
                     {!! Form::label('paid_afp', 'Pago AFP', ['class' => 'text-nowrap']) !!}
                     {!! Form::text('paid_afp', '$'.number_format($this->paid_afp,2) , ['class' => 'form-control font-weight-bold text-center text-danger', 'readonly']) !!}
                 </div>
-                
-                <div class="col-12 col-sm-8 col-md-12 d-flex align-items-end justify-content-center justify-content-sm-end justify-content-md-center">
-                    <a class="btn bg-navy my-3" wire:click="calcular_pago()">Refresh</a>
-                </div>
             </div>
-
         </div>
     </div>
 </div>
-</div>
-</div>
-
